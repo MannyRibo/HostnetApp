@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".WachtwoordVergetenActivity"></activity>
-        <activity android:name=".InlogschermActivity" />
+        <activity android:name=".ZoekActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

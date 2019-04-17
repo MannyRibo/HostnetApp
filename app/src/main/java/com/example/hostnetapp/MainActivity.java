@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickInloggen(View view) {
-        Intent intent = new Intent(MainActivity.this, InlogschermActivity.class);
+        Intent intent = new Intent(MainActivity.this, ZoekActivity.class);
         startActivity(intent);
     }
 
