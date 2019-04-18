@@ -4,21 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff"
-    tools:context=".ZoekActivity">
-
-    <ImageView
-        android:id="@+id/imageViewEditLogo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:onClick="onClickEditProfile"
-        app:layout_constraintBottom_toTopOf="@+id/zoekOpNaam"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/profielNaam"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3"
-        app:srcCompat="@drawable/ic_edit" />
+    tools:context=".EditProfile">
 
     <TextView
         android:id="@+id/ingelogdAls"
@@ -27,7 +13,7 @@
         android:layout_marginStart="100dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="100dp"
-        android:text="Ingelogd als"
+        android:text="Profiel Jan Smit"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -39,114 +25,110 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="100dp"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/zoekOpNaam"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ingelogdAls"
         app:srcCompat="@drawable/profilepicture" />
 
     <TextView
-        android:id="@+id/profielNaam"
+        android:id="@+id/profielNaam2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="16dp"
-        android:text="Jan Smit"
+        android:layout_marginStart="6dp"
+        android:layout_marginEnd="8dp"
+        android:text="Wijzig"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="20sp"
-        app:layout_constraintEnd_toStartOf="@+id/imageViewEditLogo"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView3"
+        app:layout_constraintTop_toTopOf="@+id/imageView3" />
 
     <TextView
         android:id="@+id/zoekOpNaam"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="24dp"
-        android:text="Zoek op naam"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
+        android:text="Wijzig Telefoonnummer"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profielNaam" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
     <EditText
         android:id="@+id/zoekNaam"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
+        android:layout_width="245dp"
+        android:layout_height="45dp"
         android:layout_marginTop="4dp"
         android:ems="10"
-        android:hint="Naam"
+        android:hint="06 - 8225 4321"
         android:inputType="textPersonName"
         android:textColorLink="@color/colorPrimaryDark"
         app:layout_constraintStart_toStartOf="@+id/zoekOpNaam"
         app:layout_constraintTop_toBottomOf="@+id/zoekOpNaam" />
 
-    <ImageView
-        android:id="@+id/imageViewZoekNaam"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:onClick="imageViewZoekNaam"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/zoekNaam"
-        app:layout_constraintTop_toTopOf="@+id/zoekNaam"
-        app:srcCompat="@drawable/ic_search" />
-
     <TextView
         android:id="@+id/zoekOpAfdeling"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
         android:layout_marginTop="24dp"
-        android:text="Zoek op afdeling"
+        android:layout_marginEnd="8dp"
+        android:text="Wijzig Persoonlijke email"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/zoekNaam" />
 
     <EditText
         android:id="@+id/zoekAfdeling"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
+        android:layout_width="258dp"
+        android:layout_height="49dp"
         android:layout_marginTop="4dp"
         android:ems="10"
-        android:hint="Afdeling"
+        android:hint="jansmit@gmail.com"
         android:inputType="textPersonName"
         android:textColorLink="@color/colorPrimaryDark"
         app:layout_constraintStart_toStartOf="@+id/zoekOpAfdeling"
         app:layout_constraintTop_toBottomOf="@+id/zoekOpAfdeling" />
-
-    <ImageView
-        android:id="@+id/imageViewZoekAfdeling"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="19dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:onClick="onClickEditProfile"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/zoekAfdeling"
-        app:layout_constraintTop_toTopOf="@+id/zoekAfdeling"
-        app:srcCompat="@drawable/ic_search" />
 
     <Button
         android:id="@+id/rooster"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
-        android:layout_marginTop="96dp"
         android:layout_marginEnd="100dp"
         android:layout_marginBottom="24dp"
         android:background="#ffffff"
-        android:text="Mijn rooster"
+        android:text="Opslaan"
+        android:onClick="onClickSaveProfile"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/rooster2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginBottom="8dp"
+        android:background="#ffffff"
+        android:text="Ga naar Mijn rooster"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/rooster"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/zoekAfdeling" />
 
