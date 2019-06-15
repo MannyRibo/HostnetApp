@@ -1,9 +1,11 @@
-package com.example.hostnetapp;
+package com.example.hostnetapp.ui;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+
+import com.example.hostnetapp.R;
 
 public class ZoekActivity extends AppCompatActivity {
 

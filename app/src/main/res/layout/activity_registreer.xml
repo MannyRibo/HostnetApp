@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/background_light"
+    tools:context=".ui.RegistreerActivity">
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/hostnetlogo" />
+
+    <EditText
+        android:id="@+id/registreerEmailadres"
+        android:layout_width="316dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="E-mailadres"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/registreerNaam"
+        app:layout_constraintStart_toStartOf="@+id/registreerNaam"
+        app:layout_constraintTop_toBottomOf="@+id/registreerNaam" />/>
+
+    <EditText
+        android:id="@+id/registreerNaam"
+        android:layout_width="316dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="Voornaam + achternaam"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/imageView3"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/imageView3"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+    <EditText
+        android:id="@+id/registreerWachtwoord"
+        android:layout_width="316dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="Wachtwoord"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="@+id/registreerEmailadres"
+        app:layout_constraintStart_toStartOf="@+id/registreerEmailadres"
+        app:layout_constraintTop_toBottomOf="@+id/registreerEmailadres" />
+
+    <Button
+        android:id="@+id/registreerButton"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="160dp"
+        android:background="#FFFFFF"
+        android:onClick="onClickRegistreren"
+        android:text="REGISTREREN"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/registreerWachtwoord" />
+</android.support.constraint.ConstraintLayout>

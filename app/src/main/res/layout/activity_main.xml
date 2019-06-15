@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    tools:context=".MainActivity">
+    tools:context=".ui.MainActivity">
 
     <ImageView
         android:id="@+id/imageView2"
@@ -20,12 +20,12 @@
         app:srcCompat="@drawable/hostnetlogo" />
 
     <EditText
-        android:id="@+id/gebruikersnaam"
+        android:id="@+id/emailadres"
         android:layout_width="316dp"
         android:layout_height="50dp"
         android:layout_marginTop="32dp"
         android:ems="10"
-        android:hint="Gebruikersnaam"
+        android:hint="E-mailadres"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="@+id/imageView2"
         app:layout_constraintStart_toStartOf="@+id/imageView2"
@@ -37,11 +37,11 @@
         android:layout_height="50dp"
         android:layout_marginTop="32dp"
         android:ems="10"
-        android:hint="* * * * * * * * * * "
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="@+id/gebruikersnaam"
-        app:layout_constraintStart_toStartOf="@+id/gebruikersnaam"
-        app:layout_constraintTop_toBottomOf="@+id/gebruikersnaam" />
+        android:hint="Wachtwoord"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="@+id/emailadres"
+        app:layout_constraintStart_toStartOf="@+id/emailadres"
+        app:layout_constraintTop_toBottomOf="@+id/emailadres" />
 
     <Button
         android:id="@+id/inlogButton"
@@ -58,6 +58,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/wachtwoord" />
+
+    <Button
+        android:id="@+id/registreerButton"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        android:background="#FFFFFF"
+        android:onClick="naarRegistreren"
+        android:text="REGISTREREN"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/inlogButton"
+        app:layout_constraintStart_toStartOf="@+id/inlogButton"
+        app:layout_constraintTop_toBottomOf="@+id/inlogButton" />
 
     <Button
         android:id="@+id/wachtwoordVergeten"

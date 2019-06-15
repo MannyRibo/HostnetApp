@@ -1,7 +1,9 @@
-package com.example.hostnetapp;
+package com.example.hostnetapp.ui;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.example.hostnetapp.R;
 
 public class ResultsActivity extends AppCompatActivity {
 
