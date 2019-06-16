@@ -2,16 +2,21 @@ package com.example.hostnetapp.model;
 
 public class User {
 
+    private String userID;
     private String naam;
     private String emailadres;
     private String telefoonnummer;
 
-    public User(String naam, String emailadres, String telefoonnummer) {
+    public User(String userID, String naam, String emailadres, String telefoonnummer) {
+        this.userID = userID;
         this.naam = naam;
         this.emailadres = emailadres;
         this.telefoonnummer = telefoonnummer;
     }
 
+    public String getUserID() { return userID; }
+
+    public void setUserID(String userID) { this.userID = userID; }
 
     public String getNaam() {
         return naam;

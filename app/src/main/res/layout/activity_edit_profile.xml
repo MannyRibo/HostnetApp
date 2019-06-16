@@ -7,7 +7,7 @@
     tools:context=".EditProfile">
 
     <TextView
-        android:id="@+id/ingelogdAls"
+        android:id="@+id/profielVan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
@@ -31,11 +31,11 @@
         app:layout_constraintBottom_toTopOf="@+id/wijzigTelefoon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ingelogdAls"
+        app:layout_constraintTop_toBottomOf="@+id/profielVan"
         app:srcCompat="@drawable/profilepicture" />
 
     <TextView
-        android:id="@+id/profielNaam2"
+        android:id="@+id/wijzigFoto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="6dp"
@@ -53,50 +53,47 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:layout_marginEnd="8dp"
-        android:text="Wijzig Telefoonnummer"
+        android:text="Telefoonnummer wijzigen"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/imageView3"
+        app:layout_constraintStart_toStartOf="@+id/imageView3"
         app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
     <EditText
-        android:id="@+id/zoekNaam"
+        android:id="@+id/editTelefoonnummer"
         android:layout_width="245dp"
         android:layout_height="45dp"
         android:layout_marginTop="4dp"
         android:ems="10"
         android:hint="06 - 8225 4321"
-        android:inputType="textPersonName"
+        android:inputType="number|phone"
         android:textColorLink="@color/colorPrimaryDark"
         app:layout_constraintStart_toStartOf="@+id/wijzigTelefoon"
         app:layout_constraintTop_toBottomOf="@+id/wijzigTelefoon" />
 
     <TextView
-        android:id="@+id/zoekOpAfdeling"
+        android:id="@+id/wijzigProfielnaam"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:layout_marginEnd="8dp"
-        android:text="Wijzig Persoonlijke email"
+        android:text="Profielnaam wijzigen"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/zoekNaam" />
+        app:layout_constraintStart_toStartOf="@+id/wijzigTelefoon"
+        app:layout_constraintTop_toBottomOf="@+id/editTelefoonnummer" />
 
     <EditText
-        android:id="@+id/zoekAfdeling"
+        android:id="@+id/editProfielnaam"
         android:layout_width="258dp"
         android:layout_height="49dp"
         android:layout_marginTop="4dp"
         android:ems="10"
-        android:hint="jansmit@gmail.com"
+        android:hint="Profielnaam"
         android:inputType="textPersonName"
         android:textColorLink="@color/colorPrimaryDark"
-        app:layout_constraintStart_toStartOf="@+id/zoekOpAfdeling"
-        app:layout_constraintTop_toBottomOf="@+id/zoekOpAfdeling" />
+        app:layout_constraintStart_toStartOf="@+id/wijzigProfielnaam"
+        app:layout_constraintTop_toBottomOf="@+id/wijzigProfielnaam" />
 
     <Button
         android:id="@+id/rooster"
@@ -107,6 +104,8 @@
         android:layout_marginBottom="24dp"
         android:background="#ffffff"
         android:onClick="onClickSaveProfile"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         android:text="Opslaan"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="18sp"

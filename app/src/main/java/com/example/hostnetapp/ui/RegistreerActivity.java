@@ -42,6 +42,7 @@ public class RegistreerActivity extends AppCompatActivity {
     private static final String NAAM = "naam";
     private static final String EMAILADRES = "emailadres";
     private static final String TELEFOONNUMMER = "telefoonnummer";
+    private static final String USERID = "userID";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,15 +102,17 @@ public class RegistreerActivity extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if (task.isSuccessful()) {
                                         // nieuwe gebruiker aanmaken
-                                        User user = new User(naam, emailadres, telefoonnummer);
+
+                                        String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+                                        User user = new User(userID, naam, emailadres, telefoonnummer);
                                         FirebaseDatabase.getInstance().getReference("Users")
                                                 .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                         .setValue(user);
 
-                                        naamNaarHoofdletters(naam);
-
                                         Map<String, Object> newUser = new HashMap<>();
-                                        newUser.put(NAAM, naam);
+                                        newUser.put(USERID, userID);
+                                        newUser.put(NAAM, naamNaarHoofdletters(naam));
                                         newUser.put(EMAILADRES, emailadres);
                                         newUser.put(TELEFOONNUMMER, telefoonnummer);
                                         db.collection("Users").document(

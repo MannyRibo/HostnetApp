@@ -21,7 +21,7 @@
         app:srcCompat="@drawable/ic_edit" />
 
     <TextView
-        android:id="@+id/ingelogdAls"
+        android:id="@+id/profielVan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
@@ -43,7 +43,7 @@
         android:layout_marginEnd="100dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ingelogdAls"
+        app:layout_constraintTop_toBottomOf="@+id/profielVan"
         app:srcCompat="@drawable/profilepicture" />
 
     <TextView
@@ -55,8 +55,8 @@
         android:textColor="@color/colorPrimaryDark"
         android:textSize="20sp"
         android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="@+id/ingelogdAls"
-        app:layout_constraintStart_toStartOf="@+id/ingelogdAls"
+        app:layout_constraintEnd_toEndOf="@+id/profielVan"
+        app:layout_constraintStart_toStartOf="@+id/profielVan"
         app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
     <TextView
@@ -72,7 +72,7 @@
         app:layout_constraintTop_toBottomOf="@+id/naamMedewerker" />
 
     <EditText
-        android:id="@+id/zoekNaam"
+        android:id="@+id/editTelefoonnummer"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginTop="4dp"
@@ -92,12 +92,12 @@
         android:layout_marginEnd="8dp"
         android:onClick="imageViewZoekNaam"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/zoekNaam"
-        app:layout_constraintTop_toTopOf="@+id/zoekNaam"
+        app:layout_constraintStart_toEndOf="@+id/editTelefoonnummer"
+        app:layout_constraintTop_toTopOf="@+id/editTelefoonnummer"
         app:srcCompat="@drawable/ic_search" />
 
     <TextView
-        android:id="@+id/zoekOpAfdeling"
+        android:id="@+id/wijzigProfielnaam"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
@@ -106,10 +106,10 @@
         android:textColor="@color/colorPrimaryDark"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/zoekNaam" />
+        app:layout_constraintTop_toBottomOf="@+id/editTelefoonnummer" />
 
     <EditText
-        android:id="@+id/zoekAfdeling"
+        android:id="@+id/editProfielnaam"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginTop="4dp"
@@ -117,8 +117,8 @@
         android:hint="Afdeling"
         android:inputType="textPersonName"
         android:textColorLink="@color/colorPrimaryDark"
-        app:layout_constraintStart_toStartOf="@+id/zoekOpAfdeling"
-        app:layout_constraintTop_toBottomOf="@+id/zoekOpAfdeling" />
+        app:layout_constraintStart_toStartOf="@+id/wijzigProfielnaam"
+        app:layout_constraintTop_toBottomOf="@+id/wijzigProfielnaam" />
 
     <ImageView
         android:id="@+id/imageViewZoekAfdeling"
@@ -129,12 +129,12 @@
         android:layout_marginEnd="8dp"
         android:onClick="onClickEditProfile"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/zoekAfdeling"
-        app:layout_constraintTop_toTopOf="@+id/zoekAfdeling"
+        app:layout_constraintStart_toEndOf="@+id/editProfielnaam"
+        app:layout_constraintTop_toTopOf="@+id/editProfielnaam"
         app:srcCompat="@drawable/ic_search" />
 
     <Button
-        android:id="@+id/rooster"
+        android:id="@+id/naarRooster"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
@@ -142,12 +142,15 @@
         android:layout_marginEnd="100dp"
         android:layout_marginBottom="24dp"
         android:background="#ffffff"
+        android:onClick="naarRooster"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         android:text="Mijn rooster"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/zoekAfdeling" />
+        app:layout_constraintTop_toBottomOf="@+id/editProfielnaam" />
 
 </android.support.constraint.ConstraintLayout>

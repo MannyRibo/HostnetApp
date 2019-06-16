@@ -8,6 +8,7 @@ public class Rooster {
     private String donderdag;
     private String vrijdag;
     private String zaterdag;
+    private String zondag;
 
     public Rooster(String maandag, String dinsdag, String woensdag,
                    String donderdag, String vrijdag, String zaterdag, String zondag) {
@@ -19,8 +20,6 @@ public class Rooster {
         this.zaterdag = zaterdag;
         this.zondag = zondag;
     }
-
-    private String zondag;
 
     public String getMaandag() {
         return maandag;

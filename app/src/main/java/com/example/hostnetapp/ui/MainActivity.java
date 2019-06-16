@@ -29,10 +29,6 @@ public class MainActivity extends AppCompatActivity {
     String emailadres;
     String wachtwoord;
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
-    private FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private DocumentReference userRef = db.collection("Users").document(mAuth.getCurrentUser().getUid());
-    private static final String NAAM = "naam";
-    String userNameFromDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
