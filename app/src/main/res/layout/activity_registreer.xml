@@ -63,7 +63,8 @@
         android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="Telefoonnummer"
-        android:inputType="textPersonName"
+        android:inputType="number"
+        android:phoneNumber="true"
         app:layout_constraintEnd_toEndOf="@+id/registreerEmailadres"
         app:layout_constraintStart_toStartOf="@+id/registreerEmailadres"
         app:layout_constraintTop_toBottomOf="@+id/registreerEmailadres" />
