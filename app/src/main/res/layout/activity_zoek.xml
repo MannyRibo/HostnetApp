@@ -14,9 +14,9 @@
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:onClick="onClickEditProfile"
-        app:layout_constraintBottom_toTopOf="@+id/zoekOpNaam"
+        app:layout_constraintBottom_toTopOf="@+id/wijzigTelefoon"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/profielNaam"
+        app:layout_constraintStart_toEndOf="@+id/naamMedewerker"
         app:layout_constraintTop_toBottomOf="@+id/imageView3"
         app:srcCompat="@drawable/ic_edit" />
 
@@ -47,20 +47,20 @@
         app:srcCompat="@drawable/profilepicture" />
 
     <TextView
-        android:id="@+id/profielNaam"
+        android:id="@+id/naamMedewerker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
         android:layout_marginTop="16dp"
         android:text="Jan Smit"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="20sp"
-        app:layout_constraintEnd_toStartOf="@+id/imageViewEditLogo"
-        app:layout_constraintStart_toStartOf="parent"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/ingelogdAls"
+        app:layout_constraintStart_toStartOf="@+id/ingelogdAls"
         app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
     <TextView
-        android:id="@+id/zoekOpNaam"
+        android:id="@+id/wijzigTelefoon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
@@ -69,7 +69,7 @@
         android:textColor="@color/colorPrimaryDark"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profielNaam" />
+        app:layout_constraintTop_toBottomOf="@+id/naamMedewerker" />
 
     <EditText
         android:id="@+id/zoekNaam"
@@ -80,8 +80,8 @@
         android:hint="Naam"
         android:inputType="textPersonName"
         android:textColorLink="@color/colorPrimaryDark"
-        app:layout_constraintStart_toStartOf="@+id/zoekOpNaam"
-        app:layout_constraintTop_toBottomOf="@+id/zoekOpNaam" />
+        app:layout_constraintStart_toStartOf="@+id/wijzigTelefoon"
+        app:layout_constraintTop_toBottomOf="@+id/wijzigTelefoon" />
 
     <ImageView
         android:id="@+id/imageViewZoekNaam"

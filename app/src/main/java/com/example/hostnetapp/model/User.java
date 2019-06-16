@@ -4,11 +4,14 @@ public class User {
 
     private String naam;
     private String emailadres;
+    private String telefoonnummer;
 
-    public User(String naam, String emailadres) {
+    public User(String naam, String emailadres, String telefoonnummer) {
         this.naam = naam;
         this.emailadres = emailadres;
+        this.telefoonnummer = telefoonnummer;
     }
+
 
     public String getNaam() {
         return naam;
@@ -24,5 +27,13 @@ public class User {
 
     public void setEmailadres(String emailadres) {
         this.emailadres = emailadres;
+    }
+
+    public String getTelefoonnummer() {
+        return telefoonnummer;
+    }
+
+    public void setTelefoonnummer(String telefoonnummer) {
+        this.telefoonnummer = telefoonnummer;
     }
 }

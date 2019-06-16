@@ -1,5 +1,6 @@
 package com.example.hostnetapp.ui;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.hostnetapp.R;
+import com.example.hostnetapp.model.Rooster;
 import com.example.hostnetapp.model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -30,15 +32,16 @@ public class RegistreerActivity extends AppCompatActivity {
     private EditText mRegistreerEmailadres;
     private EditText mRegistreerWachtwoord;
     private EditText mRegistreerNaam;
-    private FirebaseAuth mAuth;
+    private EditText mRegistreerTelefoonnummer;
+    private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private String naam;
     private String emailadres;
     private String wachtwoord;
+    private String telefoonnummer;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private DocumentReference userRef;
     private static final String NAAM = "naam";
     private static final String EMAILADRES = "emailadres";
-    String userName;
+    private static final String TELEFOONNUMMER = "telefoonnummer";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,39 +51,32 @@ public class RegistreerActivity extends AppCompatActivity {
         mRegistreerNaam = findViewById(R.id.registreerNaam);
         mRegistreerEmailadres = findViewById(R.id.registreerEmailadres);
         mRegistreerWachtwoord = findViewById(R.id.registreerWachtwoord);
+        mRegistreerTelefoonnummer = findViewById(R.id.registreerTelefoonnummer);
 
-        mAuth = FirebaseAuth.getInstance();
     }
 
     public void updateUI(FirebaseUser user) {
-        userRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-if (documentSnapshot.exists()) {
-userName = documentSnapshot.getString(NAAM);
-
-} else {
-    Toast.makeText(RegistreerActivity.this, "Dit document bestaat niet", Toast.LENGTH_LONG).show();
-}
-            }
-        });
         Toast.makeText(RegistreerActivity.this, "Gebruiker geregistreerd met emailadres " +
-                user.getEmail() + " en naam " + userName, Toast.LENGTH_LONG).show();
+                user.getEmail(), Toast.LENGTH_LONG).show();
+
+        Intent intent = new Intent(RegistreerActivity.this, MainActivity.class);
+        startActivity(intent);
     }
 
     public void onClickRegistreren(View view) {
         naam = mRegistreerNaam.getText().toString();
         emailadres = mRegistreerEmailadres.getText().toString();
         wachtwoord = mRegistreerWachtwoord.getText().toString();
+        telefoonnummer = mRegistreerTelefoonnummer.getText().toString();
 
         // als emailadres of wachtwoord niet is ingevoerd toast weergeven
         if ((TextUtils.isEmpty(emailadres)) || (TextUtils.isEmpty(wachtwoord))
-        || (TextUtils.isEmpty(naam))) {
+        || (TextUtils.isEmpty(naam)) || (TextUtils.isEmpty(telefoonnummer))) {
             Toast.makeText(RegistreerActivity.this,
-                    "Voer een naam, e-mailadres en wachtwoord in", Toast.LENGTH_LONG).show();
+                    "Voer alle velden in", Toast.LENGTH_LONG).show();
         }
         else if ((!TextUtils.isEmpty(emailadres)) || (!TextUtils.isEmpty(wachtwoord))
-                || (!TextUtils.isEmpty(naam))) {
+                || (!TextUtils.isEmpty(naam)) || (!TextUtils.isEmpty(telefoonnummer))) {
             if (!emailadres.contains("@")) {
                 Toast.makeText(RegistreerActivity.this,
                         "Voer een geldig e-mailadres in", Toast.LENGTH_LONG).show();
@@ -105,21 +101,20 @@ userName = documentSnapshot.getString(NAAM);
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if (task.isSuccessful()) {
                                         // nieuwe gebruiker aanmaken
-                                        User user = new User(naam, emailadres);
+                                        User user = new User(naam, emailadres, telefoonnummer);
                                         FirebaseDatabase.getInstance().getReference("Users")
                                                 .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                         .setValue(user);
 
+                                        naamNaarHoofdletters(naam);
+
                                         Map<String, Object> newUser = new HashMap<>();
                                         newUser.put(NAAM, naam);
                                         newUser.put(EMAILADRES, emailadres);
+                                        newUser.put(TELEFOONNUMMER, telefoonnummer);
                                         db.collection("Users").document(
                                                 FirebaseAuth.getInstance().getCurrentUser().getUid())
                                                 .set(newUser);
-
-                                        userRef = db.collection("Users").document(FirebaseAuth.getInstance()
-                                                .getCurrentUser().getUid());
-                                        userRef.set(newUser);
 
                                         FirebaseUser currentUser = mAuth.getCurrentUser();
                                         updateUI(currentUser);
@@ -134,5 +129,19 @@ userName = documentSnapshot.getString(NAAM);
                 }
             }
         }
+    }
+
+    public String naamNaarHoofdletters(String naam) {
+        naam.trim();
+        String[] arr = naam.split(" ");
+        StringBuffer sb = new StringBuffer();
+
+        for (int i = 0; i < arr.length; i++) {
+            sb.append(Character.toUpperCase(arr[i].charAt(0)))
+                    .append(arr[i].substring(1)).append(" ");
+        }
+        String naamHoofdletters = sb.toString().trim();
+
+        return naamHoofdletters;
     }
 }

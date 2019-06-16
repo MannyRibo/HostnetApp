@@ -1,20 +1,38 @@
 package com.example.hostnetapp.ui;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.hostnetapp.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class MainActivity extends AppCompatActivity {
 
     private EditText mEmailadres;
     private EditText mWachtwoord;
+    String emailadres;
+    String wachtwoord;
+    private FirebaseAuth mAuth = FirebaseAuth.getInstance();
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private DocumentReference userRef = db.collection("Users").document(mAuth.getCurrentUser().getUid());
+    private static final String NAAM = "naam";
+    String userNameFromDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,8 +45,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickInloggen(View view) {
 
-        String emailadres = mEmailadres.getText().toString();
-        String wachtwoord = mWachtwoord.getText().toString();
+        emailadres = mEmailadres.getText().toString();
+        wachtwoord = mWachtwoord.getText().toString();
 
         // als emailadres of wachtwoord niet is ingevoerd toast weergeven
         if ((TextUtils.isEmpty(emailadres)) || (TextUtils.isEmpty(wachtwoord))) {
@@ -55,25 +73,47 @@ public class MainActivity extends AppCompatActivity {
                 }
                 if (gedeelteNaApenstaartje.equals("@hostnet.nl")) {
 
-                    // alleen als emailadres admin@ is naar adminActivity
-                        if (emailadres.equals("admin@hostnet.nl")) {
-                            // inloggen in firebase en naar AdminActivity
-                            Intent intent = new Intent(MainActivity.this, AdminActivity.class);
-                            startActivity(intent);
-                        }
-                        // inloggen in firebase en naar ZoekActivity
-                        else {
-                            Intent intent = new Intent(MainActivity.this, ZoekActivity.class);
-                            startActivity(intent);
-                        }
+                    mAuth.signInWithEmailAndPassword(emailadres, wachtwoord)
+
+                            .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if (task.isSuccessful()) {
+                                        // inloggen gelukt, update UI met informatie van de gebruiker
+                                        FirebaseUser user = mAuth.getCurrentUser();
+                                        updateUI();
+                                    } else {
+                                        // Als inloggen mislukt melding geven aan de gebruiker
+                                        Toast.makeText(MainActivity.this, "E-mailadres of wachtwoord is incorrect",
+                                                Toast.LENGTH_LONG).show();
+                                    }
+                                }
+                            });
                     }
                 }
 
             }
         }
 
-    public void onClickWachtwoordReset(View view) {
-        // wachtwoordreset email sturen met firebase
+    private void updateUI() {
+        // alleen als emailadres admin@ is naar adminActivity
+        if (emailadres.equals("admin@hostnet.nl")) {
+            Toast.makeText(MainActivity.this, "Administrator ingelogd met e-mailadres " +
+                    mAuth.getCurrentUser().getEmail(), Toast.LENGTH_LONG).show();
+
+            // naar AdminActivity
+            Intent intent = new Intent(MainActivity.this, AdminActivity.class);
+            startActivity(intent);
+        }
+
+        else {
+            Toast.makeText(MainActivity.this, "Gebruiker ingelogd met e-mailadres " +
+                    mAuth.getCurrentUser().getEmail(), Toast.LENGTH_LONG).show();
+
+            // naar ZoekActivity
+            Intent intent = new Intent(MainActivity.this, ZoekActivity.class);
+            startActivity(intent);
+        }
     }
 
     public void naarRegistreren(View view) {

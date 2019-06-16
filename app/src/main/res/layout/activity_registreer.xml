@@ -52,6 +52,18 @@
         android:ems="10"
         android:hint="Wachtwoord"
         android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="@+id/registreerTelefoonnummer"
+        app:layout_constraintStart_toStartOf="@+id/registreerTelefoonnummer"
+        app:layout_constraintTop_toBottomOf="@+id/registreerTelefoonnummer" />
+
+    <EditText
+        android:id="@+id/registreerTelefoonnummer"
+        android:layout_width="316dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="Telefoonnummer"
+        android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="@+id/registreerEmailadres"
         app:layout_constraintStart_toStartOf="@+id/registreerEmailadres"
         app:layout_constraintTop_toBottomOf="@+id/registreerEmailadres" />
@@ -60,15 +72,13 @@
         android:id="@+id/registreerButton"
         android:layout_width="200dp"
         android:layout_height="50dp"
-        android:layout_marginStart="160dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="160dp"
+        android:layout_marginTop="16dp"
         android:background="#FFFFFF"
         android:onClick="onClickRegistreren"
         android:text="REGISTREREN"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/registreerWachtwoord"
+        app:layout_constraintStart_toStartOf="@+id/registreerWachtwoord"
         app:layout_constraintTop_toBottomOf="@+id/registreerWachtwoord" />
 </android.support.constraint.ConstraintLayout>
