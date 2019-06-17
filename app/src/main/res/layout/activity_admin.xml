@@ -6,6 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".ui.AdminActivity">
 
+    <ImageView
+        android:id="@+id/imageViewEditLogo2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:onClick="onClickEditProfile"
+        app:layout_constraintBottom_toBottomOf="@+id/naamAdmin"
+        app:layout_constraintStart_toEndOf="@+id/naamAdmin"
+        app:srcCompat="@drawable/ic_edit" />
+
     <Button
         android:id="@+id/werknemersBekijken"
         android:layout_width="wrap_content"

@@ -73,9 +73,7 @@ public class EditProfileActivity extends AppCompatActivity {
         Map<String, Object> nieuweGegevens = new HashMap<>();
         nieuweGegevens.put(NAAM, naamNaarHoofdletters(nieuweNaam));
         nieuweGegevens.put(TELEFOONNUMMER, nieuwTelefoonnummer);
-        db.collection("Users").document(
-                FirebaseAuth.getInstance().getCurrentUser().getUid())
-                .set(nieuweGegevens);
+        userRef.update(nieuweGegevens);
 
         Toast.makeText(this, "Gegevens bijgewerkt", Toast.LENGTH_SHORT).show();
     }
