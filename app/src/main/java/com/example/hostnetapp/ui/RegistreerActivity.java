@@ -178,8 +178,8 @@ public class RegistreerActivity extends AppCompatActivity {
         list.add("Kies je afdeling...");
         list.add("Ouwehoeren");
         list.add("KoffieAutomaat");
+        list.add("3");
         list.add("4");
-        list.add("5");
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, list) {
             //grijs maken van de voorselectie op de spinner nadat erop is geklikt
