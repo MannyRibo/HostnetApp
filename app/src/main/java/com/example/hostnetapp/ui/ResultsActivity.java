@@ -1,10 +1,12 @@
 package com.example.hostnetapp.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.widget.Toast;
 
 import com.example.hostnetapp.R;
 import com.example.hostnetapp.model.User;
@@ -17,6 +19,7 @@ import com.google.firebase.firestore.Query;
 public class ResultsActivity extends AppCompatActivity {
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference userRef = db.collection("Users");
+//    private EditText searchName;
 
     private UserAdapter adapter;
 
@@ -29,23 +32,26 @@ public class ResultsActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setTitle("Results");
 
-
         setUpRecyclerView();
     }
 
     private void setUpRecyclerView() {
-        Query query = userRef.orderBy("naam", Query.Direction.ASCENDING);
+        Intent intent = getIntent();
+        String searchName = intent.getStringExtra("name");
+        Toast.makeText(this, searchName, Toast.LENGTH_SHORT).show();
+//        System.out.println("liewe  " + searchName);
+//        String title = searchName.getText().toString();
+        Query query = userRef.whereEqualTo("naam", searchName);
+                //userRef.orderBy("naam", Query.Direction.ASCENDING);
 
         FirestoreRecyclerOptions<User> options = new FirestoreRecyclerOptions.Builder<User>()
                 .setQuery(query, User.class)
                 .build();
 
-        System.out.println(options);
-
         adapter = new UserAdapter(options);
 
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
-//        recyclerView.setHasFixedSize(true);
+        recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
     }

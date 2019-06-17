@@ -72,7 +72,7 @@
         app:layout_constraintTop_toBottomOf="@+id/naamMedewerker" />
 
     <EditText
-        android:id="@+id/editTelefoonnummer"
+        android:id="@+id/search_name_edit"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginTop="4dp"
@@ -90,10 +90,10 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:onClick="imageViewZoekNaam"
+        android:onClick="zoekOpNaam"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/editTelefoonnummer"
-        app:layout_constraintTop_toTopOf="@+id/editTelefoonnummer"
+        app:layout_constraintStart_toEndOf="@+id/search_name_edit"
+        app:layout_constraintTop_toTopOf="@+id/search_name_edit"
         app:srcCompat="@drawable/ic_search" />
 
     <TextView
@@ -106,7 +106,7 @@
         android:textColor="@color/colorPrimaryDark"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTelefoonnummer" />
+        app:layout_constraintTop_toBottomOf="@+id/search_name_edit" />
 
     <EditText
         android:id="@+id/editProfielnaam"
