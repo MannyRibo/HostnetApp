@@ -12,7 +12,11 @@
         <activity android:name=".ui.RoosterActivity"></activity>
         <activity android:name=".ui.RegistreerActivity" />
         <activity android:name=".ui.AdminActivity" />
-        <activity android:name=".ui.ResultsActivity" />
+        <activity
+            android:name=".ui.ResultsActivity"
+            android:parentActivityName=".ui.ZoekActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustResize" />
         <activity android:name=".ui.EditProfileActivity" />
         <activity android:name=".ui.ZoekActivity" />
         <activity android:name=".ui.MainActivity">

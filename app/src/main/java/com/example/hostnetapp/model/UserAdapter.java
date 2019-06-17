@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.hostnetapp.R;
@@ -20,8 +21,9 @@ public class UserAdapter extends FirestoreRecyclerAdapter<User, UserAdapter.User
     @Override
     protected void onBindViewHolder(@NonNull UserHolder holder, int position, @NonNull User model) {
         holder.textViewTitle.setText(model.getNaam());
-        holder.textViewDescription.setText(model.getEmailadres());
-        holder.textViewPriority.setText(model.getUserID());
+        holder.imageView.setImageResource(R.drawable.profile2);
+//        holder.textViewDescription.setText(model.getEmailadres());
+//        holder.textViewPriority.setText("1");
     }
 
     @NonNull
@@ -34,14 +36,14 @@ public class UserAdapter extends FirestoreRecyclerAdapter<User, UserAdapter.User
 
     class UserHolder extends RecyclerView.ViewHolder {
         TextView textViewTitle;
-        TextView textViewDescription;
-        TextView textViewPriority;
+        ImageView imageView;
 
         public UserHolder(View itemView) {
             super(itemView);
             textViewTitle = itemView.findViewById(R.id.text_view_title);
-            textViewDescription = itemView.findViewById(R.id.text_view_description);
-            textViewPriority = itemView.findViewById(R.id.text_view_priority);
+            imageView = itemView.findViewById(R.id.imageView_image);
+//            textViewDescription = itemView.findViewById(R.id.text_view_description);
+//            textViewPriority = itemView.findViewById(R.id.text_view_priority);
         }
     }
 }
