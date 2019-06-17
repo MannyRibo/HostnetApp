@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.widget.Toast;
 
 import com.example.hostnetapp.R;
 import com.example.hostnetapp.model.User;
@@ -37,23 +36,38 @@ public class ResultsActivity extends AppCompatActivity {
 
     private void setUpRecyclerView() {
         Intent intent = getIntent();
-        String searchName = intent.getStringExtra("name");
-        Toast.makeText(this, searchName, Toast.LENGTH_SHORT).show();
-//        System.out.println("liewe  " + searchName);
-//        String title = searchName.getText().toString();
-        Query query = userRef.whereEqualTo("naam", searchName);
-                //userRef.orderBy("naam", Query.Direction.ASCENDING);
+        String searchName = intent.getStringExtra("seachname");
+        int searchAfdeling = intent.getIntExtra("searchafdeling", 0);
 
-        FirestoreRecyclerOptions<User> options = new FirestoreRecyclerOptions.Builder<User>()
-                .setQuery(query, User.class)
-                .build();
+        if (intent.getStringExtra("seachname") == null) {
+            Query query = userRef.whereEqualTo("afdeling", searchAfdeling);
 
-        adapter = new UserAdapter(options);
+            FirestoreRecyclerOptions<User> options = new FirestoreRecyclerOptions.Builder<User>()
+                    .setQuery(query, User.class)
+                    .build();
 
-        RecyclerView recyclerView = findViewById(R.id.recycler_view);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(adapter);
+            adapter = new UserAdapter(options);
+
+            RecyclerView recyclerView = findViewById(R.id.recycler_view);
+            recyclerView.setHasFixedSize(true);
+            recyclerView.setLayoutManager(new LinearLayoutManager(this));
+            recyclerView.setAdapter(adapter);
+        } else {
+            Query query = userRef.whereEqualTo("naam", searchName);
+
+            FirestoreRecyclerOptions<User> options = new FirestoreRecyclerOptions.Builder<User>()
+                    .setQuery(query, User.class)
+                    .build();
+
+            adapter = new UserAdapter(options);
+
+            RecyclerView recyclerView = findViewById(R.id.recycler_view);
+            recyclerView.setHasFixedSize(true);
+            recyclerView.setLayoutManager(new LinearLayoutManager(this));
+            recyclerView.setAdapter(adapter);
+        }
+
+
     }
 
     @Override

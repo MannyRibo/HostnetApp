@@ -24,10 +24,9 @@ public class ZoekActivity extends AppCompatActivity {
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private DocumentReference userRef = db.collection("Users").document(mAuth.getCurrentUser().getUid());
     public static final String NAAM = "naam";
-    public static final String SEARCHNAME = "search";
 
     private TextView naam;
-    private EditText searchNameEdit;
+    private EditText searchNameEdit, searchAfdelingEdit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +34,7 @@ public class ZoekActivity extends AppCompatActivity {
         setContentView(R.layout.activity_zoek);
 
         searchNameEdit = findViewById(R.id.search_name_edit);
+        searchAfdelingEdit = findViewById(R.id.search_afdeling_edit);
         naam = findViewById(R.id.naamMedewerker);
     }
 
@@ -66,10 +66,18 @@ public class ZoekActivity extends AppCompatActivity {
 
     public void zoekOpNaam(View view) {
         String searchName = searchNameEdit.getText().toString();
-//        Toast.makeText(this, title, Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(ZoekActivity.this, ResultsActivity.class);
+        intent.putExtra("seachname", searchName);
+        startActivity(intent);
+    }
+
+    public void zoekOpAfdeling(View view) {
+        String temp = searchAfdelingEdit.getText().toString();
+        int searchAfdeling = Integer.valueOf(temp);
+
 
         Intent intent = new Intent(ZoekActivity.this, ResultsActivity.class);
-        intent.putExtra("name", searchName);
+        intent.putExtra("searchafdeling", searchAfdeling);
 
         startActivity(intent);
     }

@@ -7,13 +7,15 @@ public class User {
     private String emailadres;
     private String telefoonnummer;
     private Rooster rooster;
+    private int afdeling;
 
-    public User(String userID, String naam, String emailadres, String telefoonnummer, Rooster rooster) {
+    public User(String userID, String naam, String emailadres, String telefoonnummer, Rooster rooster, int afdeling) {
         this.userID = userID;
         this.naam = naam;
         this.emailadres = emailadres;
         this.telefoonnummer = telefoonnummer;
         this.rooster = rooster;
+        this.afdeling = afdeling;
     }
 
     public User() {
@@ -51,4 +53,12 @@ public class User {
     public Rooster getRooster() { return rooster; }
 
     public void setRooster(Rooster rooster) { this.rooster = rooster; }
+
+    public int getAfdeling() {
+        return afdeling;
+    }
+
+    public void setAfdeling(int afdeling) {
+        this.afdeling = afdeling;
+    }
 }
