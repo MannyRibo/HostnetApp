@@ -106,18 +106,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/search_name_edit" />
 
-    <EditText
-        android:id="@+id/search_afdeling_edit"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="4dp"
-        android:ems="10"
-        android:hint="Afdeling"
-        android:inputType="text"
-        android:textColorLink="@color/colorPrimaryDark"
-        app:layout_constraintStart_toStartOf="@+id/wijzigProfielnaam"
-        app:layout_constraintTop_toBottomOf="@+id/wijzigProfielnaam" />
-
     <ImageView
         android:id="@+id/imageViewZoekAfdeling"
         android:layout_width="wrap_content"
@@ -125,8 +113,8 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:onClick="zoekOpAfdeling"
-        app:layout_constraintStart_toEndOf="@+id/search_afdeling_edit"
-        app:layout_constraintTop_toTopOf="@+id/search_afdeling_edit"
+        app:layout_constraintStart_toEndOf="@+id/spinner_zoek"
+        app:layout_constraintTop_toTopOf="@+id/spinner_zoek"
         app:srcCompat="@drawable/ic_search" />
 
     <Button
@@ -134,9 +122,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
-        android:layout_marginTop="96dp"
+        android:layout_marginTop="72dp"
         android:layout_marginEnd="100dp"
-        android:layout_marginBottom="24dp"
         android:background="#ffffff"
         android:onClick="naarRooster"
         android:paddingLeft="10dp"
@@ -144,9 +131,18 @@
         android:text="Mijn rooster"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.538"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editProfielnaam" />
+        app:layout_constraintTop_toBottomOf="@+id/spinner_zoek" />
+
+    <Spinner
+        android:id="@+id/spinner_zoek"
+        android:layout_width="295dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="12dp"
+        android:spinnerMode="dropdown"
+        app:layout_constraintStart_toStartOf="@+id/wijzigProfielnaam"
+        app:layout_constraintTop_toBottomOf="@+id/wijzigProfielnaam" />
 
 </android.support.constraint.ConstraintLayout>

@@ -18,8 +18,6 @@ import com.google.firebase.firestore.Query;
 public class ResultsActivity extends AppCompatActivity {
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference userRef = db.collection("Users");
-//    private EditText searchName;
-
     private UserAdapter adapter;
 
     @Override
@@ -40,7 +38,7 @@ public class ResultsActivity extends AppCompatActivity {
         String searchAfdeling = intent.getStringExtra("searchafdeling");
 //intent.getStringExtra("seachname")
         if (searchName == null) {
-            setTitle("Resultaten Afdeling Search");
+            setTitle("Resultaten: "+ searchAfdeling);
             Query query = userRef.whereEqualTo("afdeling", searchAfdeling);
 
             FirestoreRecyclerOptions<User> options = new FirestoreRecyclerOptions.Builder<User>()
@@ -54,7 +52,7 @@ public class ResultsActivity extends AppCompatActivity {
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
             recyclerView.setAdapter(adapter);
         } else {
-            setTitle("Resultaten Naam Search");
+            setTitle("Resultaten: "+ searchName);
             Query query = userRef.whereEqualTo("naam", searchName);
 //             = userRef.orderBy("name").startAt(searchName).endAt(searchName + "\uf8ff");
 //            Query query = FirebaseFirestore.getInstance().collection("Users").whereGreaterThanOrEqualTo("naam", searchName);
@@ -83,4 +81,6 @@ public class ResultsActivity extends AppCompatActivity {
         super.onStop();
         adapter.stopListening();
     }
+
+
 }
