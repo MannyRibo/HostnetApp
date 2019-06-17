@@ -16,6 +16,10 @@ public class User {
         this.rooster = rooster;
     }
 
+    public User() {
+        //lege contructor nodig
+    }
+
     public String getUserID() { return userID; }
 
     public void setUserID(String userID) { this.userID = userID; }

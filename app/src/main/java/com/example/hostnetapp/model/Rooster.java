@@ -21,6 +21,10 @@ public class Rooster {
         this.zondag = zondag;
     }
 
+    public Rooster(){
+        //lege constructor nodig
+    }
+
     public String getMaandag() {
         return maandag;
     }
