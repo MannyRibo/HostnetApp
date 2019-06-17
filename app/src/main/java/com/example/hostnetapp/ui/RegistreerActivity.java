@@ -38,11 +38,13 @@ public class RegistreerActivity extends AppCompatActivity {
     private String emailadres;
     private String wachtwoord;
     private String telefoonnummer;
+    private Rooster rooster;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private static final String NAAM = "naam";
     private static final String EMAILADRES = "emailadres";
     private static final String TELEFOONNUMMER = "telefoonnummer";
     private static final String USERID = "userID";
+    private static final String ROOSTER = "rooster";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,7 +107,14 @@ public class RegistreerActivity extends AppCompatActivity {
 
                                         String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-                                        User user = new User(userID, naam, emailadres, telefoonnummer);
+                                        rooster = new Rooster(
+                                                "09:00 - 17:00", "09:00 - 17:00",
+                                                "08:00 - 16:00","10:00 - 18:00",
+                                                "09:00 - 17:00","08:00 - 16:00",
+                                                "10:00 - 18:00"
+                                                );
+
+                                        User user = new User(userID, naam, emailadres, telefoonnummer, rooster);
                                         FirebaseDatabase.getInstance().getReference("Users")
                                                 .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                         .setValue(user);
@@ -115,6 +124,7 @@ public class RegistreerActivity extends AppCompatActivity {
                                         newUser.put(NAAM, naamNaarHoofdletters(naam));
                                         newUser.put(EMAILADRES, emailadres);
                                         newUser.put(TELEFOONNUMMER, telefoonnummer);
+                                        newUser.put(ROOSTER, rooster);
                                         db.collection("Users").document(
                                                 FirebaseAuth.getInstance().getCurrentUser().getUid())
                                                 .set(newUser);
