@@ -44,7 +44,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profielVan"
-        app:srcCompat="@drawable/profilepicture" />
+        app:srcCompat="@drawable/profile2" />
 
     <TextView
         android:id="@+id/naamMedewerker"
