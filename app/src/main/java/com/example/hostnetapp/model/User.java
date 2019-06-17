@@ -7,9 +7,9 @@ public class User {
     private String emailadres;
     private String telefoonnummer;
     private Rooster rooster;
-    private int afdeling;
+    private String afdeling;
 
-    public User(String userID, String naam, String emailadres, String telefoonnummer, Rooster rooster, int afdeling) {
+    public User(String userID, String naam, String emailadres, String telefoonnummer, Rooster rooster, String afdeling) {
         this.userID = userID;
         this.naam = naam;
         this.emailadres = emailadres;
@@ -54,11 +54,11 @@ public class User {
 
     public void setRooster(Rooster rooster) { this.rooster = rooster; }
 
-    public int getAfdeling() {
+    public String getAfdeling() {
         return afdeling;
     }
 
-    public void setAfdeling(int afdeling) {
+    public void setAfdeling(String afdeling) {
         this.afdeling = afdeling;
     }
 }

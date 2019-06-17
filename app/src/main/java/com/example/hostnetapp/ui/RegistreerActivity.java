@@ -1,12 +1,17 @@
 package com.example.hostnetapp.ui;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.hostnetapp.R;
@@ -20,7 +25,9 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class RegistreerActivity extends AppCompatActivity {
@@ -29,13 +36,14 @@ public class RegistreerActivity extends AppCompatActivity {
     private EditText mRegistreerWachtwoord;
     private EditText mRegistreerNaam;
     private EditText mRegistreerTelefoonnummer;
+    private Spinner mAfdeling;
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private String naam;
     private String emailadres;
     private String wachtwoord;
     private String telefoonnummer;
     private Rooster rooster;
-    private int afdeling;
+    private String afdeling;
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private static final String NAAM = "naam";
@@ -54,7 +62,8 @@ public class RegistreerActivity extends AppCompatActivity {
         mRegistreerEmailadres = findViewById(R.id.registreerEmailadres);
         mRegistreerWachtwoord = findViewById(R.id.registreerWachtwoord);
         mRegistreerTelefoonnummer = findViewById(R.id.registreerTelefoonnummer);
-
+        mAfdeling = (Spinner) findViewById(R.id.spinner_edit);
+        addItemsOnSpinner();
     }
 
     public void updateUI(FirebaseUser user) {
@@ -70,10 +79,12 @@ public class RegistreerActivity extends AppCompatActivity {
         emailadres = mRegistreerEmailadres.getText().toString();
         wachtwoord = mRegistreerWachtwoord.getText().toString();
         telefoonnummer = mRegistreerTelefoonnummer.getText().toString();
+        final String afdeling = mAfdeling.getSelectedItem().toString();
+//        Toast.makeText(this, afdeling, Toast.LENGTH_SHORT).show();
 
         // als emailadres of wachtwoord niet is ingevoerd toast weergeven
         if ((TextUtils.isEmpty(emailadres)) || (TextUtils.isEmpty(wachtwoord))
-        || (TextUtils.isEmpty(naam)) || (TextUtils.isEmpty(telefoonnummer))) {
+        || (TextUtils.isEmpty(naam)) || (TextUtils.isEmpty(telefoonnummer)) || afdeling == "Kies je afdeling...") {
             Toast.makeText(RegistreerActivity.this,
                     "Voer alle velden in", Toast.LENGTH_LONG).show();
         }
@@ -105,7 +116,7 @@ public class RegistreerActivity extends AppCompatActivity {
                                         // nieuwe gebruiker aanmaken
                                         String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-                                        int afdeling = 1;
+//                                        int afdeling = 1;
 
                                         rooster = new Rooster(
                                                 "09:00 - 17:00", "09:00 - 17:00",
@@ -160,4 +171,46 @@ public class RegistreerActivity extends AppCompatActivity {
 
         return naamHoofdletters;
     }
+    // add items into spinner dynamically
+    public void addItemsOnSpinner() {
+        mAfdeling = (Spinner) findViewById(R.id.spinner_edit);
+        List<String> list = new ArrayList<String>();
+        list.add("Kies je afdeling...");
+        list.add("Ouwehoeren");
+        list.add("KoffieAutomaat");
+        list.add("4");
+        list.add("5");
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, list) {
+            //grijs maken van de voorselectie op de spinner nadat erop is geklikt
+            @Override
+            public boolean isEnabled(int position) {
+                if (position == 0) {
+                    // Disable the first item from Spinner
+                    // First item will be use for hint
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+
+            @Override
+            public View getDropDownView(int position, View convertView,
+                                        ViewGroup parent) {
+                View view = super.getDropDownView(position, convertView, parent);
+                TextView tv = (TextView) view;
+                if (position == 0) {
+                    // Set the hint text color gray
+                    tv.setTextColor(Color.GRAY);
+                } else {
+                    tv.setTextColor(Color.BLACK);
+                }
+                return view;
+            }
+        };
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mAfdeling.setAdapter(dataAdapter);
+
+    }
+
 }

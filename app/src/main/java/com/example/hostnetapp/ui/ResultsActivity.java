@@ -37,7 +37,7 @@ public class ResultsActivity extends AppCompatActivity {
     private void setUpRecyclerView() {
         Intent intent = getIntent();
         String searchName = intent.getStringExtra("seachname");
-        int searchAfdeling = intent.getIntExtra("searchafdeling", 0);
+        String searchAfdeling = intent.getStringExtra("searchafdeling");
 
         if (intent.getStringExtra("seachname") == null) {
             Query query = userRef.whereEqualTo("afdeling", searchAfdeling);

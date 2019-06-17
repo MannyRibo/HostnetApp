@@ -72,13 +72,9 @@ public class ZoekActivity extends AppCompatActivity {
     }
 
     public void zoekOpAfdeling(View view) {
-        String temp = searchAfdelingEdit.getText().toString();
-        int searchAfdeling = Integer.valueOf(temp);
-
-
+        String searchAfdeling = searchAfdelingEdit.getText().toString();
         Intent intent = new Intent(ZoekActivity.this, ResultsActivity.class);
         intent.putExtra("searchafdeling", searchAfdeling);
-
         startActivity(intent);
     }
 

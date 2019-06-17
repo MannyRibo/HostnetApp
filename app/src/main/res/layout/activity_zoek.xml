@@ -113,7 +113,7 @@
         android:layout_marginTop="4dp"
         android:ems="10"
         android:hint="Afdeling"
-        android:inputType="number"
+        android:inputType="text"
         android:textColorLink="@color/colorPrimaryDark"
         app:layout_constraintStart_toStartOf="@+id/wijzigProfielnaam"
         app:layout_constraintTop_toBottomOf="@+id/wijzigProfielnaam" />
