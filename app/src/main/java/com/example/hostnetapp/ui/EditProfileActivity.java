@@ -152,8 +152,9 @@ public class EditProfileActivity extends AppCompatActivity {
             // Continue only if the File was successfully created
             if (photoFile != null) {
                 Uri photoURI = FileProvider.getUriForFile(this,
-                        "com.example.tuppermeals",
+                        "com.example.hostnetapp",
                         photoFile);
+//                Uri uri = FileProvider.getUriForFile(context, context.getPackageName() + ".share", result);
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
                 startActivityForResult(takePictureIntent, REQUEST_CAPTURE_IMAGE);
             }
@@ -168,4 +169,10 @@ public class EditProfileActivity extends AppCompatActivity {
             Glide.with(this).load(currentPhotoPath).into(profileImage);
         }
     }
+
+    public void onClickChangePicture(View view) {
+        openCameraIntent();
+    }
+
+
 }

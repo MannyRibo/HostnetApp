@@ -43,6 +43,7 @@
         android:text="Wijzig"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="20sp"
+        android:onClick="onClickChangePicture"
         app:layout_constraintBottom_toBottomOf="@+id/profile_view_edit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/profile_view_edit"
