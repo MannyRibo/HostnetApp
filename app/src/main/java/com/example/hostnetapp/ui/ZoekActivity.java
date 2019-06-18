@@ -1,13 +1,16 @@
 package com.example.hostnetapp.ui;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,9 +23,6 @@ import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.annotation.Nullable;
 
 public class ZoekActivity extends AppCompatActivity {
@@ -31,9 +31,12 @@ public class ZoekActivity extends AppCompatActivity {
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private DocumentReference userRef = db.collection("Users").document(mAuth.getCurrentUser().getUid());
     public static final String NAAM = "naam";
+    public static final String IMAGEURL = "imageurl";
+    private Context mContext;
 
     private TextView naam;
     private EditText searchNameEdit;
+    private ImageView profileImageZoekscherm;
     private Spinner searchAfdelingSpinner;
 
     @Override
@@ -44,7 +47,13 @@ public class ZoekActivity extends AppCompatActivity {
         searchNameEdit = findViewById(R.id.search_name_edit);
         searchAfdelingSpinner = findViewById(R.id.spinner_zoek);
         naam = findViewById(R.id.naamMedewerker);
+        profileImageZoekscherm = findViewById(R.id.profile_view_edit);
+
         searchAfdelingSpinner.setSelection(0);
+
+//        String url = IMAGEURL;
+//        Glide.with(mContext).load(url).into(profileImageZoekscherm);
+
 
         addItemsOnSpinner();
     }
@@ -63,8 +72,16 @@ public class ZoekActivity extends AppCompatActivity {
                 }
 
                 if (documentSnapshot.exists()) {
+
+
+
                     naam.setText(documentSnapshot.getString(NAAM));
                     naam.setVisibility(View.VISIBLE);
+                    profileImageZoekscherm.setImageDrawable(Drawable.createFromPath(documentSnapshot.getString(IMAGEURL)));
+                    profileImageZoekscherm.setVisibility(View.VISIBLE);
+
+//                    Toast.makeText(ZoekActivity.this, documentSnapshot.getString(IMAGEURL), Toast.LENGTH_SHORT).show();
+//                    profileImageZoekscherm.setImageResource(Integer.valueOf(documentSnapshot.getString(IMAGEURL)));
                 }
             }
         });

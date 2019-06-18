@@ -89,19 +89,21 @@ public class EditProfileActivity extends AppCompatActivity {
                     editProfielNaam.setText(documentSnapshot.getString(NAAM));
                     telefoonnummer.setText(documentSnapshot.getString(TELEFOONNUMMER));
                     profileImage.setImageDrawable(Drawable.createFromPath(documentSnapshot.getString(IMAGEURL)));
+                    profileImage.setVisibility(View.VISIBLE);
                 }
             }
         });
     }
 
     public void onClickSaveProfile(View view) {
-
         String nieuweNaam = editProfielNaam.getText().toString();
         String nieuwTelefoonnummer = telefoonnummer.getText().toString();
+        String nieuwProfileImage = currentPhotoPath;
 
         Map<String, Object> nieuweGegevens = new HashMap<>();
         nieuweGegevens.put(NAAM, naamNaarHoofdletters(nieuweNaam));
         nieuweGegevens.put(TELEFOONNUMMER, nieuwTelefoonnummer);
+        nieuweGegevens.put(IMAGEURL, nieuwProfileImage);
         userRef.update(nieuweGegevens);
 
         Toast.makeText(this, "Gegevens bijgewerkt", Toast.LENGTH_SHORT).show();
@@ -133,6 +135,7 @@ public class EditProfileActivity extends AppCompatActivity {
         );
         // Save a file: path for use with ACTION_VIEW intents
         currentPhotoPath = image.getAbsolutePath();
+        System.out.println("liewe "+currentPhotoPath);
         return image;
     }
 

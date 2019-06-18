@@ -26,9 +26,6 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class RegistreerActivity extends AppCompatActivity {
 
     private EditText mRegistreerEmailadres;
@@ -156,6 +153,7 @@ public class RegistreerActivity extends AppCompatActivity {
                             // nieuwe gebruiker aanmaken
                             String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
                             String imageUrl = String.valueOf(R.drawable.profilepicture);
+                            System.out.println("liewe "+imageUrl);
 
                             User newUser;
 
