@@ -62,7 +62,7 @@
             app:layout_constraintTop_toBottomOf="@+id/email_details" />
 
         <TextView
-            android:id="@+id/maandag"
+            android:id="@+id/rooster_woensdag"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_marginStart="8dp"
@@ -89,7 +89,7 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
             android:textStyle="italic"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/maandag" />
+            app:layout_constraintTop_toBottomOf="@+id/rooster_woensdag" />
 
         <TextView
             android:id="@+id/rooster_vrijdag"
