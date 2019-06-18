@@ -97,15 +97,10 @@ public class ZoekActivity extends AppCompatActivity {
 
     public void addItemsOnSpinner() {
         searchAfdelingSpinner = (Spinner) findViewById(R.id.spinner_zoek);
-        List<String> list = new ArrayList<String>();
-        list.add("Kies je afdeling...");
-        list.add("Administratie");
-        list.add("Directie");
-        list.add("Operations");
-        list.add("Personeelszaken");
-        list.add("Software Engineering");
+
+        String[] afdelingen = getResources().getStringArray(R.array.afdelingen);
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_spinner_item, list) {
+                android.R.layout.simple_spinner_item, afdelingen) {
             //grijs maken van de voorselectie op de spinner nadat erop is geklikt
             @Override
             public boolean isEnabled(int position) {
