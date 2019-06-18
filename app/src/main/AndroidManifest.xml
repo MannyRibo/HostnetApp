@@ -16,21 +16,28 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ui.AdminUserDetailActivity"
+            android:label="Details van werknemer"></activity>
         <activity
             android:name=".ui.AdminResultsActivity"
             android:parentActivityName=".ui.ZoekActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustResize" />
-        <activity android:name=".ui.RoosterActivity" />
-        <activity android:name=".ui.RegistreerActivity" />
-        <activity android:name=".ui.AdminActivity" />
+        <activity android:name=".ui.RoosterActivity"
+            android:label="Mijn rooster"/>
+        <activity android:name=".ui.RegistreerActivity"
+            android:label="Registreren"/>
+        <activity android:name=".ui.AdminActivity"
+            android:label="Admin panel"/>
         <activity
             android:name=".ui.ResultsActivity"
             android:parentActivityName=".ui.ZoekActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustResize" />
-        <activity android:name=".ui.EditProfileActivity" />
-        <activity android:name=".ui.ZoekActivity" />
+        <activity android:name=".ui.EditProfileActivity"
+            android:label="Profiel wijzigen"/>
+        <activity android:name=".ui.ZoekActivity"
+            android:label="Overzicht"/>
         <activity android:name=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -48,7 +55,6 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
-
     </application>
 
 </manifest>

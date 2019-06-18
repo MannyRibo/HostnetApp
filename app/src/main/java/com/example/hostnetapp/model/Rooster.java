@@ -1,6 +1,9 @@
 package com.example.hostnetapp.model;
 
-public class Rooster {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Rooster implements Parcelable {
 
     private String maandag;
     private String dinsdag;
@@ -80,4 +83,42 @@ public class Rooster {
     public void setZondag(String zondag) {
         this.zondag = zondag;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(maandag);
+        dest.writeString(dinsdag);
+        dest.writeString(woensdag);
+        dest.writeString(donderdag);
+        dest.writeString(vrijdag);
+        dest.writeString(zaterdag);
+        dest.writeString(zondag);
+    }
+
+    protected Rooster(Parcel in) {
+        maandag = in.readString();
+        dinsdag = in.readString();
+        woensdag = in.readString();
+        donderdag = in.readString();
+        vrijdag = in.readString();
+        zaterdag = in.readString();
+        zondag = in.readString();
+    }
+
+    public static final Creator<Rooster> CREATOR = new Creator<Rooster>() {
+        @Override
+        public Rooster createFromParcel(Parcel in) {
+            return new Rooster(in);
+        }
+
+        @Override
+        public Rooster[] newArray(int size) {
+            return new Rooster[size];
+        }
+    };
 }

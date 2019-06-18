@@ -27,7 +27,7 @@
         android:onClick="naarWerknemers"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:text="WERKNEMERS"
+        android:text="WERKNEMERS BEHEREN"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"

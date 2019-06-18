@@ -1,6 +1,9 @@
 package com.example.hostnetapp.model;
 
-public class User {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class User implements Parcelable {
 
     private String userID;
     private String naam;
@@ -81,4 +84,41 @@ public class User {
     }
 
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(userID);
+        dest.writeString(naam);
+        dest.writeString(emailadres);
+        dest.writeString(telefoonnummer);
+        dest.writeParcelable(rooster, flags);
+        dest.writeString(afdeling);
+        dest.writeString(imageurl);
+    }
+
+    protected User(Parcel in) {
+        userID = in.readString();
+        naam = in.readString();
+        emailadres = in.readString();
+        telefoonnummer = in.readString();
+        rooster = in.readParcelable(Rooster.class.getClassLoader());
+        afdeling = in.readString();
+        imageurl = in.readString();
+    }
+
+    public static final Creator<User> CREATOR = new Creator<User>() {
+        @Override
+        public User createFromParcel(Parcel in) {
+            return new User(in);
+        }
+
+        @Override
+        public User[] newArray(int size) {
+            return new User[size];
+        }
+    };
 }

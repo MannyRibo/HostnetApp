@@ -1,5 +1,6 @@
 package com.example.hostnetapp.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -8,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.widget.Toast;
 
 import com.example.hostnetapp.R;
+import com.example.hostnetapp.model.Rooster;
 import com.example.hostnetapp.model.User;
 import com.example.hostnetapp.model.UserAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
@@ -21,6 +23,7 @@ public class AdminResultsActivity extends AppCompatActivity {
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference userRef = db.collection("Users");
     private UserAdapter adapter;
+    public static final String USER = "user";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,10 +59,12 @@ public class AdminResultsActivity extends AppCompatActivity {
             adapter.setOnItemClickListener(new UserAdapter.OnItemClickListener() {
                 @Override
                 public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
-                    User newUser = documentSnapshot.toObject(User.class);
-                    Toast.makeText(AdminResultsActivity.this,"Deze werknemer heet "
-                            + newUser.getNaam() + "\n" + "en werkt op afdeling "
-                            + newUser.getAfdeling(), Toast.LENGTH_LONG).show();
+                    User user = documentSnapshot.toObject(User.class);
+
+                    Intent intent = new Intent(AdminResultsActivity.this, AdminUserDetailActivity.class);
+                    intent.putExtra(USER, user);
+                    startActivity(intent);
+
                 }
             });
         }

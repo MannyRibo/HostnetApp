@@ -1,5 +1,6 @@
 package com.example.hostnetapp.ui;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -51,6 +52,7 @@ public class RegistreerActivity extends AppCompatActivity {
     private static final String AFDELING = "afdeling";
     private static final String IMAGEURL = "imageurl";
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -160,8 +162,8 @@ public class RegistreerActivity extends AppCompatActivity {
                             rooster = new Rooster(
                                     "09:00 - 17:00", "09:00 - 17:00",
                                     "08:00 - 16:00", "10:00 - 18:00",
-                                    "09:00 - 17:00", "08:00 - 16:00",
-                                    "10:00 - 18:00"
+                                    "09:00 - 17:00", "Vrij",
+                                    "Vrij"
                             );
 
                             // als emailadres admin@hostnet.nl is afdeling admin maken,
