@@ -2,4 +2,12 @@
     <string name="app_name">Hostnetapp</string>
     <string name="title">Title</string>
     <string name="description">Description</string>
+    <string-array name="afdelingen">
+        <item>Kies je afdeling...</item>
+        <item>Administratie</item>
+        <item>Directie</item>
+        <item>Operations</item>
+        <item>Personeelszaken</item>
+        <item>Software Engineering</item>
+    </string-array>
 </resources>
