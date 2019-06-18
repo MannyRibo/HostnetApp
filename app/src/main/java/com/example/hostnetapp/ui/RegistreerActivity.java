@@ -43,6 +43,7 @@ public class RegistreerActivity extends AppCompatActivity {
     private String telefoonnummer;
     private Rooster rooster;
     private String afdeling;
+    private String imageUrl;
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private static final String NAAM = "naam";
@@ -51,6 +52,7 @@ public class RegistreerActivity extends AppCompatActivity {
     private static final String USERID = "userID";
     private static final String ROOSTER = "rooster";
     private static final String AFDELING = "afdeling";
+    private static final String IMAGEURL = "imageurl";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,8 +82,6 @@ public class RegistreerActivity extends AppCompatActivity {
                             mAfdeling.setVisibility(View.VISIBLE);
                         }
                     }
-
-
                 }
                 return false;
             }
@@ -155,6 +155,7 @@ public class RegistreerActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // nieuwe gebruiker aanmaken
                             String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                            String imageUrl = String.valueOf(R.drawable.profilepicture);
 
                             User newUser;
 
@@ -168,9 +169,9 @@ public class RegistreerActivity extends AppCompatActivity {
                             // als emailadres admin@hostnet.nl is afdeling admin maken,
                             // dan is ie ook niet terug te vinden in recyclerview
                             if (emailadres.equals("admin@hostnet.nl")) {
-                                newUser = new User(userID, naamNaarHoofdletters(naam), emailadres, telefoonnummer, rooster, "Admin");
+                                newUser = new User(userID, naamNaarHoofdletters(naam), emailadres, telefoonnummer, rooster, "Admin", imageUrl);
                             } else {
-                                newUser = new User(userID, naamNaarHoofdletters(naam), emailadres, telefoonnummer, rooster, afdeling);
+                                newUser = new User(userID, naamNaarHoofdletters(naam), emailadres, telefoonnummer, rooster, afdeling, imageUrl);
                             }
 
                             FirebaseDatabase.getInstance().getReference("Users")

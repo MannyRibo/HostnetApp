@@ -17,7 +17,7 @@
         app:layout_constraintBottom_toTopOf="@+id/wijzigTelefoon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/naamMedewerker"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3"
+        app:layout_constraintTop_toBottomOf="@+id/profile_view_edit"
         app:srcCompat="@drawable/ic_edit" />
 
     <TextView
@@ -35,7 +35,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/profile_view_edit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
@@ -57,7 +57,7 @@
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="@+id/profielVan"
         app:layout_constraintStart_toStartOf="@+id/profielVan"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+        app:layout_constraintTop_toBottomOf="@+id/profile_view_edit" />
 
     <TextView
         android:id="@+id/wijzigTelefoon"

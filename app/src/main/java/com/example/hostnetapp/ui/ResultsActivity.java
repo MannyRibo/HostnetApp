@@ -28,6 +28,7 @@ public class ResultsActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+
         setUpRecyclerView();
     }
 
@@ -53,6 +54,9 @@ public class ResultsActivity extends AppCompatActivity {
         } else {
             setTitle("Resultaten: "+ searchName);
             Query query = userRef.whereEqualTo("naam", searchName);
+//            String str1 = document.getString("yourProperty");
+//            String str2 = "Cali";
+//            boolean b = str1.toLowerCase().contains(str2.toLowerCase());
 //             = userRef.orderBy("name").startAt(searchName).endAt(searchName + "\uf8ff");
 //            Query query = FirebaseFirestore.getInstance().collection("Users").whereGreaterThanOrEqualTo("naam", searchName);
 //            Query query = db.collection("Users").startAt(searchAfdeling+ "\uf8ff");
@@ -80,5 +84,6 @@ public class ResultsActivity extends AppCompatActivity {
         super.onStop();
         adapter.stopListening();
     }
+
 
 }

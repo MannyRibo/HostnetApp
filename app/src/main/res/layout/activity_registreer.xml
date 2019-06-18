@@ -8,7 +8,7 @@
     tools:context=".ui.RegistreerActivity">
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/profile_view_edit"
         android:layout_width="300dp"
         android:layout_height="122dp"
         android:layout_marginStart="30dp"
@@ -39,10 +39,10 @@
         android:ems="10"
         android:hint="Voornaam + achternaam"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="@+id/imageView3"
+        app:layout_constraintEnd_toEndOf="@+id/profile_view_edit"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/imageView3"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+        app:layout_constraintStart_toStartOf="@+id/profile_view_edit"
+        app:layout_constraintTop_toBottomOf="@+id/profile_view_edit" />
 
     <EditText
         android:id="@+id/registreerWachtwoord"
