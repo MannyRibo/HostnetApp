@@ -152,8 +152,8 @@ public class RegistreerActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // nieuwe gebruiker aanmaken
                             String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                            String imageUrl = String.valueOf(R.drawable.profilepicture);
-                            System.out.println("liewe "+imageUrl);
+                            String imageurl = String.valueOf(R.drawable.profilepicture);
+                            System.out.println("liewe "+imageurl);
 
                             User newUser;
 
@@ -167,9 +167,9 @@ public class RegistreerActivity extends AppCompatActivity {
                             // als emailadres admin@hostnet.nl is afdeling admin maken,
                             // dan is ie ook niet terug te vinden in recyclerview
                             if (emailadres.equals("admin@hostnet.nl")) {
-                                newUser = new User(userID, naamNaarHoofdletters(naam), emailadres, telefoonnummer, rooster, "Admin", imageUrl);
+                                newUser = new User(userID, naamNaarHoofdletters(naam), emailadres, telefoonnummer, rooster, "Admin", imageurl);
                             } else {
-                                newUser = new User(userID, naamNaarHoofdletters(naam), emailadres, telefoonnummer, rooster, afdeling, imageUrl);
+                                newUser = new User(userID, naamNaarHoofdletters(naam), emailadres, telefoonnummer, rooster, afdeling, imageurl);
                             }
 
                             FirebaseDatabase.getInstance().getReference("Users")
