@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -26,9 +27,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class RegistreerActivity extends AppCompatActivity {
 
@@ -64,6 +63,30 @@ public class RegistreerActivity extends AppCompatActivity {
         mRegistreerTelefoonnummer = findViewById(R.id.registreerTelefoonnummer);
         mAfdeling = (Spinner) findViewById(R.id.spinner_edit);
         addItemsOnSpinner();
+
+        // spinner laten verdwijnen als emailadres admin@hostnet.nl is
+        mRegistreerTelefoonnummer.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+
+                emailadres = mRegistreerEmailadres.getText().toString();
+
+                if (MotionEvent.ACTION_UP == event.getAction()) {
+                    if (emailadres != null) {
+                        if (emailadres.equals("admin@hostnet.nl")) {
+                            mAfdeling.setVisibility(View.INVISIBLE);
+                        }
+                        if (!emailadres.equals("admin@hostnet.nl")) {
+                            mAfdeling.setVisibility(View.VISIBLE);
+                        }
+                    }
+
+
+                }
+                return false;
+            }
+        });
+
     }
 
     public void updateUI(FirebaseUser user) {
@@ -79,16 +102,23 @@ public class RegistreerActivity extends AppCompatActivity {
         emailadres = mRegistreerEmailadres.getText().toString();
         wachtwoord = mRegistreerWachtwoord.getText().toString();
         telefoonnummer = mRegistreerTelefoonnummer.getText().toString();
-        final String afdeling = mAfdeling.getSelectedItem().toString();
+        afdeling = mAfdeling.getSelectedItem().toString();
 //        Toast.makeText(this, afdeling, Toast.LENGTH_SHORT).show();
 
-        // als emailadres of wachtwoord niet is ingevoerd toast weergeven
+        // als niet alle velden zijn ingevoerd toast weergeven
         if ((TextUtils.isEmpty(emailadres)) || (TextUtils.isEmpty(wachtwoord))
-        || (TextUtils.isEmpty(naam)) || (TextUtils.isEmpty(telefoonnummer)) || afdeling == "Kies je afdeling...") {
+                || (TextUtils.isEmpty(naam)) || (TextUtils.isEmpty(telefoonnummer)) /*|| afdeling == "Kies je afdeling..."*/) {
             Toast.makeText(RegistreerActivity.this,
                     "Voer alle velden in", Toast.LENGTH_LONG).show();
-        }
-        else if ((!TextUtils.isEmpty(emailadres)) || (!TextUtils.isEmpty(wachtwoord))
+
+            // admin hoeft geen afdeling te kiezen, deze gaat standaard naar afdeling admin
+            if (afdeling == "Kies je afdeling..." && emailadres == "admin@hostnet.nl"
+                    && (!TextUtils.isEmpty(wachtwoord)) && (!TextUtils.isEmpty(naam))
+                    && (!TextUtils.isEmpty(telefoonnummer))) {
+
+                gebruikerRegistreren();
+            }
+        } else if ((!TextUtils.isEmpty(emailadres)) || (!TextUtils.isEmpty(wachtwoord))
                 || (!TextUtils.isEmpty(naam)) || (!TextUtils.isEmpty(telefoonnummer))) {
             if (!emailadres.contains("@")) {
                 Toast.makeText(RegistreerActivity.this,
@@ -108,54 +138,57 @@ public class RegistreerActivity extends AppCompatActivity {
                 }
                 if (gedeelteNaApenstaartje.equals("@hostnet.nl")) {
                     // als emailadres eindigt op @hostnet.nl gebruiker registreren
-                    mAuth.createUserWithEmailAndPassword(emailadres, wachtwoord)
-                            .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                                @Override
-                                public void onComplete(@NonNull Task<AuthResult> task) {
-                                    if (task.isSuccessful()) {
-                                        // nieuwe gebruiker aanmaken
-                                        String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-//                                        int afdeling = 1;
+                    gebruikerRegistreren();
 
-                                        rooster = new Rooster(
-                                                "09:00 - 17:00", "09:00 - 17:00",
-                                                "08:00 - 16:00","10:00 - 18:00",
-                                                "09:00 - 17:00","08:00 - 16:00",
-                                                "10:00 - 18:00"
-                                                );
-
-
-
-                                        User user = new User(userID, naam, emailadres, telefoonnummer, rooster, afdeling);
-                                        FirebaseDatabase.getInstance().getReference("Users")
-                                                .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                                        .setValue(user);
-
-                                        Map<String, Object> newUser = new HashMap<>();
-                                        newUser.put(USERID, userID);
-                                        newUser.put(NAAM, naamNaarHoofdletters(naam));
-                                        newUser.put(EMAILADRES, emailadres);
-                                        newUser.put(TELEFOONNUMMER, telefoonnummer);
-                                        newUser.put(ROOSTER, rooster);
-                                        newUser.put(AFDELING, afdeling);
-                                        db.collection("Users").document(
-                                                FirebaseAuth.getInstance().getCurrentUser().getUid())
-                                                .set(newUser);
-
-                                        FirebaseUser currentUser = mAuth.getCurrentUser();
-                                        updateUI(currentUser);
-
-                                    }
-                                    else {
-                                        Toast.makeText(RegistreerActivity.this, task.getException().getMessage(),
-                                                Toast.LENGTH_LONG).show();
-                                    }
-                                }
-                            });
                 }
             }
         }
+    }
+
+    private void gebruikerRegistreren() {
+        mAuth.createUserWithEmailAndPassword(emailadres, wachtwoord)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // nieuwe gebruiker aanmaken
+                            String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+                            User newUser;
+
+                            rooster = new Rooster(
+                                    "09:00 - 17:00", "09:00 - 17:00",
+                                    "08:00 - 16:00", "10:00 - 18:00",
+                                    "09:00 - 17:00", "08:00 - 16:00",
+                                    "10:00 - 18:00"
+                            );
+
+                            // als emailadres admin@hostnet.nl is afdeling admin maken,
+                            // dan is ie ook niet terug te vinden in recyclerview
+                            if (emailadres.equals("admin@hostnet.nl")) {
+                                newUser = new User(userID, naam, emailadres, telefoonnummer, rooster, "Admin");
+                            } else {
+                                newUser = new User(userID, naam, emailadres, telefoonnummer, rooster, afdeling);
+                            }
+
+                            FirebaseDatabase.getInstance().getReference("Users")
+                                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                    .setValue(newUser);
+
+                            db.collection("Users").document(
+                                    FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                    .set(newUser);
+
+                            FirebaseUser currentUser = mAuth.getCurrentUser();
+                            updateUI(currentUser);
+
+                        } else {
+                            Toast.makeText(RegistreerActivity.this, task.getException().getMessage(),
+                                    Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
     }
 
     public String naamNaarHoofdletters(String naam) {
@@ -171,15 +204,17 @@ public class RegistreerActivity extends AppCompatActivity {
 
         return naamHoofdletters;
     }
+
     // add items into spinner dynamically
     public void addItemsOnSpinner() {
         mAfdeling = (Spinner) findViewById(R.id.spinner_edit);
         List<String> list = new ArrayList<String>();
         list.add("Kies je afdeling...");
-        list.add("Ouwehoeren");
-        list.add("KoffieAutomaat");
-        list.add("3");
-        list.add("4");
+        list.add("Administratie");
+        list.add("Directie");
+        list.add("Operations");
+        list.add("Personeelszaken");
+        list.add("Software Engineering");
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, list) {
             //grijs maken van de voorselectie op de spinner nadat erop is geklikt

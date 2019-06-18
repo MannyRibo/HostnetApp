@@ -28,13 +28,12 @@ public class ResultsActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-
         setUpRecyclerView();
     }
 
     private void setUpRecyclerView() {
         Intent intent = getIntent();
-        String searchName = intent.getStringExtra("seachname");
+        String searchName = intent.getStringExtra("searchname");
         String searchAfdeling = intent.getStringExtra("searchafdeling");
 //intent.getStringExtra("seachname")
         if (searchName == null) {
@@ -81,6 +80,5 @@ public class ResultsActivity extends AppCompatActivity {
         super.onStop();
         adapter.stopListening();
     }
-
 
 }

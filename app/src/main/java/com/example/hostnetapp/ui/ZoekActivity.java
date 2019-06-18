@@ -78,7 +78,7 @@ public class ZoekActivity extends AppCompatActivity {
     public void zoekOpNaam(View view) {
         String searchName = searchNameEdit.getText().toString();
         Intent intent = new Intent(ZoekActivity.this, ResultsActivity.class);
-        intent.putExtra("seachname", searchName);
+        intent.putExtra("searchname", searchName);
         startActivity(intent);
     }
 
@@ -99,10 +99,11 @@ public class ZoekActivity extends AppCompatActivity {
         searchAfdelingSpinner = (Spinner) findViewById(R.id.spinner_zoek);
         List<String> list = new ArrayList<String>();
         list.add("Kies je afdeling...");
-        list.add("Ouwehoeren");
-        list.add("KoffieAutomaat");
-        list.add("3");
-        list.add("4");
+        list.add("Administratie");
+        list.add("Directie");
+        list.add("Operations");
+        list.add("Personeelszaken");
+        list.add("Software Engineering");
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, list) {
             //grijs maken van de voorselectie op de spinner nadat erop is geklikt
