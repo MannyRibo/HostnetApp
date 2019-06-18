@@ -8,16 +8,24 @@ public class User {
     private String telefoonnummer;
     private Rooster rooster;
     private String afdeling;
-    private String imageUrl;
+    private String imageurl;
 
-    public User(String userID, String naam, String emailadres, String telefoonnummer, Rooster rooster, String afdeling, String imageUrl) {
+    public String getImageurl() {
+        return imageurl;
+    }
+
+    public void setImageurl(String imageurl) {
+        this.imageurl = imageurl;
+    }
+
+    public User(String userID, String naam, String emailadres, String telefoonnummer, Rooster rooster, String afdeling, String imageurl) {
         this.userID = userID;
         this.naam = naam;
         this.emailadres = emailadres;
         this.telefoonnummer = telefoonnummer;
         this.rooster = rooster;
         this.afdeling = afdeling;
-        this.imageUrl = imageUrl;
+        this.imageurl = imageurl;
     }
 
     public User() {
@@ -72,11 +80,5 @@ public class User {
         this.afdeling = afdeling;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
-    }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
 }

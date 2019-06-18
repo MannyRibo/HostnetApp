@@ -28,7 +28,7 @@ public class UserAdapter extends FirestoreRecyclerAdapter<User, UserAdapter.User
     @Override
     protected void onBindViewHolder(@NonNull UserHolder holder, int position, @NonNull User model) {
         holder.textViewTitle.setText(model.getNaam());
-        String url = model.getImageUrl();
+        String url = model.getImageurl();
         System.out.println("liewe "+url);
 //        Glide.with(mContext).load(url).into(holder.imageView);
         holder.imageView.setImageDrawable(Drawable.createFromPath(url));

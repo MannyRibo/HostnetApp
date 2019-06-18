@@ -40,7 +40,7 @@ public class RegistreerActivity extends AppCompatActivity {
     private String telefoonnummer;
     private Rooster rooster;
     private String afdeling;
-    private String imageUrl;
+    private String imageurl;
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private static final String NAAM = "naam";
