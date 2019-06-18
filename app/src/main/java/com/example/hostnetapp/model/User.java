@@ -24,9 +24,13 @@ public class User {
         //lege contructor nodig
     }
 
-    public String getUserID() { return userID; }
+    public String getUserID() {
+        return userID;
+    }
 
-    public void setUserID(String userID) { this.userID = userID; }
+    public void setUserID(String userID) {
+        this.userID = userID;
+    }
 
     public String getNaam() {
         return naam;
@@ -52,9 +56,13 @@ public class User {
         this.telefoonnummer = telefoonnummer;
     }
 
-    public Rooster getRooster() { return rooster; }
+    public Rooster getRooster() {
+        return rooster;
+    }
 
-    public void setRooster(Rooster rooster) { this.rooster = rooster; }
+    public void setRooster(Rooster rooster) {
+        this.rooster = rooster;
+    }
 
     public String getAfdeling() {
         return afdeling;

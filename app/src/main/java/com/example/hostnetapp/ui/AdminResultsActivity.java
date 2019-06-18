@@ -1,8 +1,7 @@
 package com.example.hostnetapp.ui;
 
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -47,7 +46,7 @@ public class AdminResultsActivity extends AppCompatActivity {
                     .setQuery(query, User.class)
                     .build();
 
-            adapter = new UserAdapter(options);
+            adapter = new UserAdapter(this, options);
 
             RecyclerView recyclerView = findViewById(R.id.recycler_view);
             recyclerView.setHasFixedSize(true);

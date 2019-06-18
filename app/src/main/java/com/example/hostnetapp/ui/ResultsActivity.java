@@ -36,6 +36,8 @@ public class ResultsActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String searchName = intent.getStringExtra("searchname");
         String searchAfdeling = intent.getStringExtra("searchafdeling");
+//        String searchAfdeling = intent.getStringExtra("searchafdeling");
+
 //intent.getStringExtra("seachname")
         if (searchName == null) {
             setTitle("Resultaten: "+ searchAfdeling);
@@ -45,7 +47,7 @@ public class ResultsActivity extends AppCompatActivity {
                     .setQuery(query, User.class)
                     .build();
 
-            adapter = new UserAdapter(options);
+            adapter = new UserAdapter(this, options);
 
             RecyclerView recyclerView = findViewById(R.id.recycler_view);
             recyclerView.setHasFixedSize(true);
@@ -64,7 +66,7 @@ public class ResultsActivity extends AppCompatActivity {
                     .setQuery(query, User.class)
                     .build();
 
-            adapter = new UserAdapter(options);
+            adapter = new UserAdapter(this, options);
 
             RecyclerView recyclerView = findViewById(R.id.recycler_view);
             recyclerView.setHasFixedSize(true);
