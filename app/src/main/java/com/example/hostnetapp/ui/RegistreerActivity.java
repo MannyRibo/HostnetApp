@@ -105,19 +105,20 @@ public class RegistreerActivity extends AppCompatActivity {
         afdeling = mAfdeling.getSelectedItem().toString();
 //        Toast.makeText(this, afdeling, Toast.LENGTH_SHORT).show();
 
+        // admin hoeft geen afdeling te kiezen, deze gaat standaard naar afdeling admin
+        if (afdeling == "Kies je afdeling..." && emailadres == "admin@hostnet.nl"
+                && (!TextUtils.isEmpty(wachtwoord)) && (!TextUtils.isEmpty(naam))
+                && (!TextUtils.isEmpty(telefoonnummer))) {
+
+            gebruikerRegistreren();
+        }
+
         // als niet alle velden zijn ingevoerd toast weergeven
         if ((TextUtils.isEmpty(emailadres)) || (TextUtils.isEmpty(wachtwoord))
-                || (TextUtils.isEmpty(naam)) || (TextUtils.isEmpty(telefoonnummer)) /*|| afdeling == "Kies je afdeling..."*/) {
+                || (TextUtils.isEmpty(naam)) || (TextUtils.isEmpty(telefoonnummer)) || afdeling == "Kies je afdeling...") {
             Toast.makeText(RegistreerActivity.this,
                     "Voer alle velden in", Toast.LENGTH_LONG).show();
 
-            // admin hoeft geen afdeling te kiezen, deze gaat standaard naar afdeling admin
-            if (afdeling == "Kies je afdeling..." && emailadres == "admin@hostnet.nl"
-                    && (!TextUtils.isEmpty(wachtwoord)) && (!TextUtils.isEmpty(naam))
-                    && (!TextUtils.isEmpty(telefoonnummer))) {
-
-                gebruikerRegistreren();
-            }
         } else if ((!TextUtils.isEmpty(emailadres)) || (!TextUtils.isEmpty(wachtwoord))
                 || (!TextUtils.isEmpty(naam)) || (!TextUtils.isEmpty(telefoonnummer))) {
             if (!emailadres.contains("@")) {
@@ -167,9 +168,9 @@ public class RegistreerActivity extends AppCompatActivity {
                             // als emailadres admin@hostnet.nl is afdeling admin maken,
                             // dan is ie ook niet terug te vinden in recyclerview
                             if (emailadres.equals("admin@hostnet.nl")) {
-                                newUser = new User(userID, naam, emailadres, telefoonnummer, rooster, "Admin");
+                                newUser = new User(userID, naamNaarHoofdletters(naam), emailadres, telefoonnummer, rooster, "Admin");
                             } else {
-                                newUser = new User(userID, naam, emailadres, telefoonnummer, rooster, afdeling);
+                                newUser = new User(userID, naamNaarHoofdletters(naam), emailadres, telefoonnummer, rooster, afdeling);
                             }
 
                             FirebaseDatabase.getInstance().getReference("Users")
