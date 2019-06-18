@@ -60,4 +60,8 @@ public class AdminActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void naarWerknemers(View view) {
+        Intent intent = new Intent(AdminActivity.this, AdminResultsActivity.class);
+        startActivity(intent);
+    }
 }

@@ -11,8 +11,11 @@ import android.widget.TextView;
 import com.example.hostnetapp.R;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.firebase.firestore.DocumentSnapshot;
 
 public class UserAdapter extends FirestoreRecyclerAdapter<User, UserAdapter.UserHolder> {
+
+    private OnItemClickListener listener;
 
     public UserAdapter(@NonNull FirestoreRecyclerOptions<User> options) {
         super(options);
@@ -44,6 +47,26 @@ public class UserAdapter extends FirestoreRecyclerAdapter<User, UserAdapter.User
             imageView = itemView.findViewById(R.id.imageView_image);
 //            textViewDescription = itemView.findViewById(R.id.text_view_description);
 //            textViewPriority = itemView.findViewById(R.id.text_view_priority);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION && listener != null) {
+
+                        listener.onItemClick(getSnapshots().getSnapshot(position), position);
+                    }
+
+                }
+            });
         }
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(DocumentSnapshot documentSnapshot, int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
     }
 }
