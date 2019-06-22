@@ -11,79 +11,13 @@
     app:cardBackgroundColor="#FFFFE8">
 
     <android.support.v4.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">/>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">/>
 
         <android.support.constraint.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:padding="8dp">
-
-            <TextView
-                android:id="@+id/tijdDinsdag"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif"
-                android:text="08:00 - 16:00"
-                android:textSize="18sp"
-                android:textStyle="italic"
-                app:layout_constraintBaseline_toBaselineOf="@+id/rooster_dinsdag_title"
-                app:layout_constraintStart_toStartOf="@+id/tijdMaandag" />
-
-            <TextView
-                android:id="@+id/tijdZondag"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif"
-                android:text="Vrij"
-                android:textSize="18sp"
-                android:textStyle="italic"
-                app:layout_constraintBaseline_toBaselineOf="@+id/rooster_zondag_title"
-                app:layout_constraintStart_toStartOf="@+id/tijdZaterdag" />
-
-            <TextView
-                android:id="@+id/tijdZaterdag"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif"
-                android:text="Vrij"
-                android:textSize="18sp"
-                android:textStyle="italic"
-                app:layout_constraintBaseline_toBaselineOf="@+id/rooster_zaterdag_title"
-                app:layout_constraintStart_toStartOf="@+id/tijdVrijdag" />
-
-            <TextView
-                android:id="@+id/tijdVrijdag"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif"
-                android:text="08:00 - 16:00"
-                android:textSize="18sp"
-                android:textStyle="italic"
-                app:layout_constraintBaseline_toBaselineOf="@+id/rooster_vrijdag_title"
-                app:layout_constraintStart_toStartOf="@+id/tijdDonderdag" />
-
-            <TextView
-                android:id="@+id/tijdDonderdag"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif"
-                android:text="08:00 - 16:00"
-                android:textSize="18sp"
-                android:textStyle="italic"
-                app:layout_constraintBaseline_toBaselineOf="@+id/rooster_donderdag_title"
-                app:layout_constraintStart_toStartOf="@+id/tijdWoensdag" />
-
-            <TextView
-                android:id="@+id/tijdWoensdag"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif"
-                android:text="08:00 - 16:00"
-                android:textSize="18sp"
-                android:textStyle="italic"
-                app:layout_constraintBaseline_toBaselineOf="@+id/rooster_woensdag_title"
-                app:layout_constraintStart_toStartOf="@+id/tijdDinsdag" />
 
 
             <TextView
@@ -244,17 +178,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/afdeling_details" />
 
             <TextView
-                android:id="@+id/tijdMaandag"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif"
-                android:text="08:00 - 16:00"
-                android:textSize="18sp"
-                android:textStyle="italic"
-                app:layout_constraintBaseline_toBaselineOf="@+id/rooster_maandag_title"
-                app:layout_constraintStart_toStartOf="@+id/telefoonnummer_details_text" />
-
-            <TextView
                 android:id="@+id/naam_details_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -331,12 +254,82 @@
                 app:layout_constraintTop_toBottomOf="@+id/profielVan_details"
                 app:srcCompat="@drawable/profilepicture" />
 
+            <EditText
+                android:id="@+id/editTextTijdMaandag"
+                android:layout_width="120dp"
+                android:layout_height="40dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="09:00 - 16:00"
+                app:layout_constraintBaseline_toBaselineOf="@+id/rooster_maandag_title"
+                app:layout_constraintStart_toStartOf="@+id/telefoonnummer_details_text" />
+
+            <EditText
+                android:id="@+id/editTextTijdDinsdag"
+                android:layout_width="120dp"
+                android:layout_height="40dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="09:00 - 16:00"
+                app:layout_constraintBaseline_toBaselineOf="@+id/rooster_dinsdag_title"
+                app:layout_constraintStart_toStartOf="@+id/editTextTijdMaandag" />
+
+            <EditText
+                android:id="@+id/editTextTijdWoensdag"
+                android:layout_width="120dp"
+                android:layout_height="40dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="09:00 - 16:00"
+                app:layout_constraintBaseline_toBaselineOf="@+id/rooster_woensdag_title"
+                app:layout_constraintStart_toStartOf="@+id/editTextTijdDinsdag" />
+
+            <EditText
+                android:id="@+id/editTextTijdDonderdag"
+                android:layout_width="120dp"
+                android:layout_height="40dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="09:00 - 16:00"
+                app:layout_constraintBaseline_toBaselineOf="@+id/rooster_donderdag_title"
+                app:layout_constraintStart_toStartOf="@+id/editTextTijdWoensdag" />
+
+            <EditText
+                android:id="@+id/editTextTijdVrijdag"
+                android:layout_width="120dp"
+                android:layout_height="40dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="09:00 - 16:00"
+                app:layout_constraintBaseline_toBaselineOf="@+id/rooster_vrijdag_title"
+                app:layout_constraintStart_toStartOf="@+id/editTextTijdDonderdag" />
+
+            <EditText
+                android:id="@+id/editTextTijdZaterdag"
+                android:layout_width="120dp"
+                android:layout_height="40dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="09:00 - 16:00"
+                app:layout_constraintBaseline_toBaselineOf="@+id/rooster_zaterdag_title"
+                app:layout_constraintStart_toStartOf="@+id/editTextTijdVrijdag" />
+
+            <EditText
+                android:id="@+id/editTextTijdZondag"
+                android:layout_width="120dp"
+                android:layout_height="40dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="09:00 - 16:00"
+                app:layout_constraintBaseline_toBaselineOf="@+id/rooster_zondag_title"
+                app:layout_constraintStart_toStartOf="@+id/editTextTijdZaterdag" />
+
             <Button
-                android:id="@+id/editrooster"
+                android:id="@+id/saverooster"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
-                android:onClick="editRooster"
-                android:text="BEWERKEN"
+                android:onClick="saveRooster"
+                android:text="OPSLAAN"
                 app:layout_constraintBaseline_toBaselineOf="@+id/telefoonnummer_details3"
                 app:layout_constraintStart_toStartOf="@+id/telefoonnummer_details_text" />
 

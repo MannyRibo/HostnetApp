@@ -1,5 +1,6 @@
 package com.example.hostnetapp.ui;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -30,9 +31,10 @@ public class AdminUserDetailActivity extends AppCompatActivity {
 
     User user;
 
-    private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private DocumentReference userRef;
+
+    public static final String USER = "user";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,5 +93,11 @@ public class AdminUserDetailActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public void editRooster(View view) {
+        Intent intent = new Intent(AdminUserDetailActivity.this, AdminUserDetailEditActivity.class);
+        intent.putExtra(USER, user);
+        startActivity(intent);
     }
 }
