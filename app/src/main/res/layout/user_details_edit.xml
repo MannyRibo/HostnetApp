@@ -3,50 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:layout_marginStart="8dp"
     android:layout_marginTop="8dp"
-    android:layout_marginBottom="8dp"
     android:layout_marginEnd="8dp"
-    app:cardBackgroundColor="#FFFFE8">
-
-    <android.support.v4.widget.NestedScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">/>
+    android:layout_marginBottom="8dp"
+    app:cardBackgroundColor="#FFFFff">
 
         <android.support.constraint.ConstraintLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#ffffff"
             android:padding="8dp">
 
-
-            <TextView
-                android:id="@+id/afdeling_details"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
-                android:layout_toEndOf="@+id/profileImage_cardview"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:text="Afdeling:"
-                android:textAppearance="@style/TextAppearance.AppCompat.Title"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/naam_details" />
-
-            <TextView
-                android:id="@+id/telefoonnummer_details"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
-                android:layout_toEndOf="@+id/profileImage_cardview"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:text="Telefoonnummer:"
-                android:textAppearance="@style/TextAppearance.AppCompat.Title"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/email_details" />
 
             <TextView
                 android:id="@+id/rooster_woensdag_title"
@@ -109,14 +78,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="24dp"
                 android:layout_toEndOf="@+id/profileImage_cardview"
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:text="Maandag:"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/telefoonnummer_details3" />
+                app:layout_constraintTop_toBottomOf="@+id/profielVan_details" />
 
             <TextView
                 android:id="@+id/rooster_dinsdag_title"
@@ -135,7 +104,7 @@
             <TextView
                 android:id="@+id/rooster_zondag_title"
                 android:layout_width="wrap_content"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
                 android:layout_toEndOf="@+id/profileImage_cardview"
@@ -143,95 +112,8 @@
                 android:maxLines="1"
                 android:text="Zondag:"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/rooster_zaterdag_title" />
-
-            <TextView
-                android:id="@+id/telefoonnummer_details3"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="24dp"
-                android:layout_toEndOf="@+id/profileImage_cardview"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:text="Rooster:"
-                android:textAppearance="@style/TextAppearance.AppCompat.Title"
-                android:textSize="24sp"
-                android:textStyle="italic"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/telefoonnummer_details" />
-
-            <TextView
-                android:id="@+id/email_details"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
-                android:layout_toEndOf="@+id/profileImage_cardview"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:text="E-mailadres:"
-                android:textAppearance="@style/TextAppearance.AppCompat.Title"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/afdeling_details" />
-
-            <TextView
-                android:id="@+id/naam_details_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="160dp"
-                android:layout_marginTop="24dp"
-                android:text="Voorbeeldnaam"
-                android:textSize="16sp"
-                android:textStyle="italic"
-                app:layout_constraintStart_toEndOf="@+id/naam_details"
-                app:layout_constraintTop_toBottomOf="@+id/profielfoto_details" />
-
-            <TextView
-                android:id="@+id/afdeling_details_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Voorbeeldafdeling"
-                android:textSize="16sp"
-                android:textStyle="italic"
-                app:layout_constraintBaseline_toBaselineOf="@+id/afdeling_details"
-                app:layout_constraintStart_toStartOf="@+id/naam_details_text" />
-
-            <TextView
-                android:id="@+id/email_details_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Voorbeeld e-mail"
-                android:textSize="16sp"
-                android:textStyle="italic"
-                app:layout_constraintBaseline_toBaselineOf="@+id/email_details"
-                app:layout_constraintStart_toStartOf="@+id/afdeling_details_text" />
-
-            <TextView
-                android:id="@+id/telefoonnummer_details_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Voorbeeld telnummer"
-                android:textSize="16sp"
-                android:textStyle="italic"
-                app:layout_constraintBaseline_toBaselineOf="@+id/telefoonnummer_details"
-                app:layout_constraintStart_toStartOf="@+id/email_details_text" />
-
-            <TextView
-                android:id="@+id/naam_details"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="24dp"
-                android:fontFamily="sans-serif-medium"
-                android:text="Naam:"
-                android:textAppearance="@style/TextAppearance.AppCompat.Title"
-                android:textColor="?attr/editTextColor"
-                android:textSize="20sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/profielfoto_details" />
 
             <TextView
                 android:id="@+id/profielVan_details"
@@ -244,25 +126,16 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageView
-                android:id="@+id/profielfoto_details"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/profielVan_details"
-                app:srcCompat="@drawable/profilepicture" />
-
             <EditText
                 android:id="@+id/editTextTijdMaandag"
                 android:layout_width="120dp"
                 android:layout_height="40dp"
+                android:layout_marginEnd="16dp"
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:text="09:00 - 16:00"
-                app:layout_constraintBaseline_toBaselineOf="@+id/rooster_maandag_title"
-                app:layout_constraintStart_toStartOf="@+id/telefoonnummer_details_text" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/rooster_maandag_title" />
 
             <EditText
                 android:id="@+id/editTextTijdDinsdag"
@@ -327,12 +200,17 @@
             <Button
                 android:id="@+id/saverooster"
                 android:layout_width="wrap_content"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="#ffffff"
                 android:onClick="saveRooster"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
                 android:text="OPSLAAN"
-                app:layout_constraintBaseline_toBaselineOf="@+id/telefoonnummer_details3"
-                app:layout_constraintStart_toStartOf="@+id/telefoonnummer_details_text" />
+                android:textColor="@color/colorPrimaryDark"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextTijdZondag" />
 
         </android.support.constraint.ConstraintLayout>
-    </android.support.v4.widget.NestedScrollView>
 </android.support.v7.widget.CardView>

@@ -2,8 +2,8 @@ package com.example.hostnetapp.ui;
 
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -11,7 +11,6 @@ import android.widget.Toast;
 
 import com.example.hostnetapp.R;
 import com.example.hostnetapp.model.User;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
@@ -23,7 +22,7 @@ import javax.annotation.Nullable;
 public class AdminUserDetailActivity extends AppCompatActivity {
 
     private TextView naam, afdeling, emailadres, telefoonnummer, maandag,
-    dinsdag, woensdag, donderdag, vrijdag, zaterdag, zondag, profielNaam;
+            dinsdag, woensdag, donderdag, vrijdag, zaterdag, zondag, profielNaam;
 
     private ImageView profielfoto;
 
@@ -64,13 +63,6 @@ public class AdminUserDetailActivity extends AppCompatActivity {
         afdeling.setText(user.getAfdeling());
         emailadres.setText(user.getEmailadres());
         telefoonnummer.setText(user.getTelefoonnummer());
-        maandag.setText(user.getRooster().getMaandag());
-        dinsdag.setText(user.getRooster().getDinsdag());
-        woensdag.setText(user.getRooster().getWoensdag());
-        donderdag.setText(user.getRooster().getDonderdag());
-        vrijdag.setText(user.getRooster().getVrijdag());
-        zaterdag.setText(user.getRooster().getZaterdag());
-        zondag.setText(user.getRooster().getZondag());
     }
 
     @Override
@@ -87,10 +79,24 @@ public class AdminUserDetailActivity extends AppCompatActivity {
                 }
 
                 if (documentSnapshot.exists()) {
+                    if (documentSnapshot.getString(IMAGEURL) == null) {
+                        profielfoto.setImageResource(R.drawable.profilepicture);
+                        profielfoto.setVisibility(View.VISIBLE);
+                    } else {
+                        profielfoto.setImageDrawable(Drawable.createFromPath(documentSnapshot.getString(IMAGEURL)));
+                        profielfoto.setVisibility(View.VISIBLE);
+                    }
+                    User newUser = (documentSnapshot.toObject(User.class));
 
-                    profielfoto.setImageDrawable(Drawable.createFromPath(documentSnapshot.getString(IMAGEURL)));
-                    profielfoto.setVisibility(View.VISIBLE);
+                    maandag.setText(newUser.getRooster().getMaandag());
+                    dinsdag.setText(newUser.getRooster().getDinsdag());
+                    woensdag.setText(newUser.getRooster().getWoensdag());
+                    donderdag.setText(newUser.getRooster().getDonderdag());
+                    vrijdag.setText(newUser.getRooster().getVrijdag());
+                    zaterdag.setText(newUser.getRooster().getZaterdag());
+                    zondag.setText(newUser.getRooster().getZondag());
                 }
+
             }
         });
     }

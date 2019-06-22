@@ -88,8 +88,15 @@ public class EditProfileActivity extends AppCompatActivity {
                     profielNaam.setVisibility(View.VISIBLE);
                     editProfielNaam.setText(documentSnapshot.getString(NAAM));
                     telefoonnummer.setText(documentSnapshot.getString(TELEFOONNUMMER));
-                    profileImage.setImageDrawable(Drawable.createFromPath(documentSnapshot.getString(IMAGEURL)));
-                    profileImage.setVisibility(View.VISIBLE);
+
+                    if (documentSnapshot.getString(IMAGEURL) == null) {
+                        profileImage.setImageResource(R.drawable.profilepicture);
+                        profileImage.setVisibility(View.VISIBLE);
+                    }
+                    else {
+                        profileImage.setImageDrawable(Drawable.createFromPath(documentSnapshot.getString(IMAGEURL)));
+                        profileImage.setVisibility(View.VISIBLE);
+                    }
                 }
             }
         });
@@ -176,6 +183,5 @@ public class EditProfileActivity extends AppCompatActivity {
     public void onClickChangePicture(View view) {
         openCameraIntent();
     }
-
 
 }

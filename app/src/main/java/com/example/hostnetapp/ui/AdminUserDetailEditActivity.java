@@ -1,8 +1,7 @@
 package com.example.hostnetapp.ui;
 
-import android.graphics.drawable.Drawable;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -10,17 +9,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.hostnetapp.R;
-import com.example.hostnetapp.model.Rooster;
 import com.example.hostnetapp.model.User;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.SetOptions;
-import com.google.firebase.firestore.model.value.FieldValue;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -29,7 +24,7 @@ import javax.annotation.Nullable;
 
 public class AdminUserDetailEditActivity extends AppCompatActivity {
 
-    private TextView naam, afdeling, emailadres, telefoonnummer, profielNaam;
+  private TextView roosterVan;
 
     private EditText editTextMaandag, editTextDinsdag, editTextWoensdag,
             editTextDonderdag, editTextVrijdag, editTextZaterdag, editTextZondag;
@@ -43,7 +38,6 @@ public class AdminUserDetailEditActivity extends AppCompatActivity {
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private DocumentReference userRef;
 
-    public static final String USER = "user";
     private static final String MAANDAG = "maandag";
     private static final String DINSDAG = "dinsdag";
     private static final String WOENSDAG = "woensdag";
@@ -61,10 +55,6 @@ public class AdminUserDetailEditActivity extends AppCompatActivity {
 
         userRef = db.collection("Users").document(user.getUserID());
 
-        naam = findViewById(R.id.naam_details_text);
-        afdeling = findViewById(R.id.afdeling_details_text);
-        emailadres = findViewById(R.id.email_details_text);
-        telefoonnummer = findViewById(R.id.telefoonnummer_details_text);
         editTextMaandag = findViewById(R.id.editTextTijdMaandag);
         editTextDinsdag = findViewById(R.id.editTextTijdDinsdag);
         editTextWoensdag = findViewById(R.id.editTextTijdWoensdag);
@@ -72,21 +62,9 @@ public class AdminUserDetailEditActivity extends AppCompatActivity {
         editTextVrijdag = findViewById(R.id.editTextTijdVrijdag);
         editTextZaterdag = findViewById(R.id.editTextTijdZaterdag);
         editTextZondag = findViewById(R.id.editTextTijdZondag);
-        profielNaam = findViewById(R.id.profielVan_details);
-        profielfoto = findViewById(R.id.profielfoto_details);
+        roosterVan = findViewById(R.id.profielVan_details);
 
-        profielNaam.setText(getString(R.string.profielvan, user.getNaam()));
-        naam.setText(user.getNaam());
-        afdeling.setText(user.getAfdeling());
-        emailadres.setText(user.getEmailadres());
-        telefoonnummer.setText(user.getTelefoonnummer());
-        editTextMaandag.setText(user.getRooster().getMaandag());
-        editTextDinsdag.setText(user.getRooster().getDinsdag());
-        editTextWoensdag.setText(user.getRooster().getWoensdag());
-        editTextDonderdag.setText(user.getRooster().getDonderdag());
-        editTextVrijdag.setText(user.getRooster().getVrijdag());
-        editTextZaterdag.setText(user.getRooster().getZaterdag());
-        editTextZondag.setText(user.getRooster().getZondag());
+        roosterVan.setText(getString(R.string.roostervan, user.getNaam()));
     }
 
     @Override
@@ -104,9 +82,17 @@ public class AdminUserDetailEditActivity extends AppCompatActivity {
 
                 if (documentSnapshot.exists()) {
 
-                    profielfoto.setImageDrawable(Drawable.createFromPath(documentSnapshot.getString(IMAGEURL)));
-                    profielfoto.setVisibility(View.VISIBLE);
+                    User newUser = (documentSnapshot.toObject(User.class));
+
+                    editTextMaandag.setText(newUser.getRooster().getMaandag());
+                    editTextDinsdag.setText(newUser.getRooster().getDinsdag());
+                    editTextWoensdag.setText(newUser.getRooster().getWoensdag());
+                    editTextDonderdag.setText(newUser.getRooster().getDonderdag());
+                    editTextVrijdag.setText(newUser.getRooster().getVrijdag());
+                    editTextZaterdag.setText(newUser.getRooster().getZaterdag());
+                    editTextZondag.setText(newUser.getRooster().getZondag());
                 }
+
             }
         });
     }

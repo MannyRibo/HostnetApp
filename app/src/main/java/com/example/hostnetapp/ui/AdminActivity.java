@@ -1,9 +1,11 @@
 package com.example.hostnetapp.ui;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +27,8 @@ public class AdminActivity extends AppCompatActivity {
     private DocumentReference userRef = db.collection("Users").document(mAuth.getCurrentUser().getUid());
     private static final String NAAM = "naam";
     TextView naam;
+    private static final String IMAGEURL = "imageurl";
+    private ImageView profielfoto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +36,8 @@ public class AdminActivity extends AppCompatActivity {
         setContentView(R.layout.activity_admin);
 
         naam = findViewById(R.id.naamAdmin);
+
+        profielfoto = findViewById(R.id.adminPicture);
     }
 
     @Override
@@ -50,6 +56,14 @@ public class AdminActivity extends AppCompatActivity {
                 if (documentSnapshot.exists()) {
                     naam.setText(documentSnapshot.getString(NAAM));
                     naam.setVisibility(View.VISIBLE);
+
+                    if (documentSnapshot.getString(IMAGEURL) == null) {
+                        profielfoto.setImageResource(R.drawable.profilepicture);
+                        profielfoto.setVisibility(View.VISIBLE);
+                    } else {
+                        profielfoto.setImageDrawable(Drawable.createFromPath(documentSnapshot.getString(IMAGEURL)));
+                        profielfoto.setVisibility(View.VISIBLE);
+                    }
                 }
             }
         });

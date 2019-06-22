@@ -31,8 +31,15 @@ public class UserAdapter extends FirestoreRecyclerAdapter<User, UserAdapter.User
         String url = model.getImageurl();
         System.out.println("liewe "+url);
 //        Glide.with(mContext).load(url).into(holder.imageView);
-        holder.imageView.setImageDrawable(Drawable.createFromPath(url));
-        holder.imageView.setVisibility(View.VISIBLE);
+
+        if (model.getImageurl() == null) {
+            holder.imageView.setImageResource(R.drawable.profilepicture);
+            holder.imageView.setVisibility(View.VISIBLE);
+        }
+        else {
+            holder.imageView.setImageDrawable(Drawable.createFromPath(url));
+            holder.imageView.setVisibility(View.VISIBLE);
+        }
 
 
 //        holder.imageView.setImageResource(R.drawable.profile2);

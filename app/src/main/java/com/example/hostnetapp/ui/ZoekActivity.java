@@ -34,10 +34,10 @@ public class ZoekActivity extends AppCompatActivity {
     public static final String IMAGEURL = "imageurl";
     private Context mContext;
 
-    private TextView naam;
     private EditText searchNameEdit;
     private ImageView profileImageZoekscherm;
     private Spinner searchAfdelingSpinner;
+    private TextView profielVan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,14 +46,10 @@ public class ZoekActivity extends AppCompatActivity {
 
         searchNameEdit = findViewById(R.id.search_name_edit);
         searchAfdelingSpinner = findViewById(R.id.spinner_zoek);
-        naam = findViewById(R.id.naamMedewerker);
         profileImageZoekscherm = findViewById(R.id.profile_view_edit);
+        profielVan = findViewById(R.id.profielVan);
 
         searchAfdelingSpinner.setSelection(0);
-
-//        String url = IMAGEURL;
-//        Glide.with(mContext).load(url).into(profileImageZoekscherm);
-
 
         addItemsOnSpinner();
     }
@@ -73,15 +69,17 @@ public class ZoekActivity extends AppCompatActivity {
 
                 if (documentSnapshot.exists()) {
 
+                    profielVan.setText(getString(R.string.ingelogdals, documentSnapshot.getString(NAAM)));
 
+                    if (documentSnapshot.getString(IMAGEURL) == null) {
+                        profileImageZoekscherm.setImageResource(R.drawable.profilepicture);
+                        profileImageZoekscherm.setVisibility(View.VISIBLE);
+                    }
+                    else {
+                        profileImageZoekscherm.setImageDrawable(Drawable.createFromPath(documentSnapshot.getString(IMAGEURL)));
+                        profileImageZoekscherm.setVisibility(View.VISIBLE);
+                    }
 
-                    naam.setText(documentSnapshot.getString(NAAM));
-                    naam.setVisibility(View.VISIBLE);
-                    profileImageZoekscherm.setImageDrawable(Drawable.createFromPath(documentSnapshot.getString(IMAGEURL)));
-                    profileImageZoekscherm.setVisibility(View.VISIBLE);
-
-//                    Toast.makeText(ZoekActivity.this, documentSnapshot.getString(IMAGEURL), Toast.LENGTH_SHORT).show();
-//                    profileImageZoekscherm.setImageResource(Integer.valueOf(documentSnapshot.getString(IMAGEURL)));
                 }
             }
         });
