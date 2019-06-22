@@ -6,202 +6,164 @@
     android:layout_height="match_parent"
     tools:context=".ui.RoosterActivity">
 
-
-    <android.support.v7.widget.CardView
-        android:id="@+id/cv1"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/textViewMaandag"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:foreground="?android:attr/selectableItemBackground"
-        app:cardElevation="3dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Maandag: "
+        android:textColor="@android:color/primary_text_light"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/roosterVanTitel" />
 
-        <android.support.constraint.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="75dp" >
-
-            <TextView
-                android:id="@+id/maandag"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:text="Maandag"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </android.support.constraint.ConstraintLayout>
-
-    </android.support.v7.widget.CardView>
-
-    <android.support.v7.widget.CardView
-        android:id="@+id/cv2"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/textViewDinsdag"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:foreground="?android:attr/selectableItemBackground"
-        app:cardElevation="3dp"
-        app:layout_constraintTop_toBottomOf="@+id/cv1">
+        android:layout_marginTop="16dp"
+        android:text="Dinsdag: "
+        android:textColor="@android:color/primary_text_light"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/textViewMaandag"
+        app:layout_constraintTop_toBottomOf="@+id/textViewMaandag" />
 
-        <android.support.constraint.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="75dp" >
-
-            <TextView
-                android:id="@+id/dinsdag"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:text="Dinsdag"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </android.support.constraint.ConstraintLayout>
-
-    </android.support.v7.widget.CardView>
-
-    <android.support.v7.widget.CardView
-        android:id="@+id/cv3"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/textViewWoensdag"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:foreground="?android:attr/selectableItemBackground"
-        app:cardElevation="3dp"
-        app:layout_constraintTop_toBottomOf="@+id/cv2">
+        android:layout_marginTop="16dp"
+        android:text="Woensdag: "
+        android:textColor="@android:color/primary_text_light"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/textViewDinsdag"
+        app:layout_constraintTop_toBottomOf="@+id/textViewDinsdag" />
 
-        <android.support.constraint.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="75dp" >
-
-            <TextView
-                android:id="@+id/woensdag"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:text="Woensdag"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </android.support.constraint.ConstraintLayout>
-
-    </android.support.v7.widget.CardView>
-
-    <android.support.v7.widget.CardView
-        android:id="@+id/cv4"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/textViewDonderdag"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:foreground="?android:attr/selectableItemBackground"
-        app:cardElevation="3dp"
-        app:layout_constraintTop_toBottomOf="@+id/cv3">
+        android:layout_marginTop="16dp"
+        android:text="Donderdag: "
+        android:textColor="@android:color/primary_text_light"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/textViewWoensdag"
+        app:layout_constraintTop_toBottomOf="@+id/textViewWoensdag" />
 
-        <android.support.constraint.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="75dp" >
-
-            <TextView
-                android:id="@+id/donderdag"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:text="Donderdag"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </android.support.constraint.ConstraintLayout>
-
-    </android.support.v7.widget.CardView>
-
-    <android.support.v7.widget.CardView
-        android:id="@+id/cv5"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/textViewVrijdag"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:foreground="?android:attr/selectableItemBackground"
-        app:cardElevation="3dp"
-        app:layout_constraintTop_toBottomOf="@+id/cv4">
+        android:layout_marginTop="16dp"
+        android:text="Vrijdag: "
+        android:textColor="@android:color/primary_text_light"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/textViewDonderdag"
+        app:layout_constraintTop_toBottomOf="@+id/textViewDonderdag" />
 
-        <android.support.constraint.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="75dp" >
-
-            <TextView
-                android:id="@+id/vrijdag"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:text="Vrijdag"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </android.support.constraint.ConstraintLayout>
-
-    </android.support.v7.widget.CardView>
-
-    <android.support.v7.widget.CardView
-        android:id="@+id/cv6"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/textViewZaterdag"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:foreground="?android:attr/selectableItemBackground"
-        app:cardElevation="3dp"
-        app:layout_constraintTop_toBottomOf="@+id/cv5">
+        android:layout_marginTop="16dp"
+        android:text="Zaterdag: "
+        android:textColor="@android:color/primary_text_light"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/textViewVrijdag"
+        app:layout_constraintTop_toBottomOf="@+id/textViewVrijdag" />
 
-        <android.support.constraint.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="75dp" >
-
-            <TextView
-                android:id="@+id/zaterdag"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:text="Zaterdag"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </android.support.constraint.ConstraintLayout>
-
-    </android.support.v7.widget.CardView>
-
-    <android.support.v7.widget.CardView
-        android:id="@+id/cv7"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/textViewZondag"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:foreground="?android:attr/selectableItemBackground"
-        app:cardElevation="3dp"
-        app:layout_constraintTop_toBottomOf="@+id/cv6">
+        android:layout_marginTop="16dp"
+        android:text="Zondag: "
+        android:textColor="@android:color/primary_text_light"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/textViewZaterdag"
+        app:layout_constraintTop_toBottomOf="@+id/textViewZaterdag" />
 
-        <android.support.constraint.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="75dp" >
+    <TextView
+        android:id="@+id/roosterTijdMaandag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="260dp"
+        android:text="TextView"
+        android:textSize="18sp"
+        android:textStyle="italic"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textViewMaandag" />
 
-            <TextView
-                android:id="@+id/zondag"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:text="Zondag"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </android.support.constraint.ConstraintLayout>
+    <TextView
+        android:id="@+id/roosterTijdDinsdag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textSize="18sp"
+        android:textStyle="italic"
+        app:layout_constraintStart_toStartOf="@+id/roosterTijdMaandag"
+        app:layout_constraintTop_toTopOf="@+id/textViewDinsdag" />
 
-    </android.support.v7.widget.CardView>
+    <TextView
+        android:id="@+id/roosterTijdWoensdag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textSize="18sp"
+        android:textStyle="italic"
+        app:layout_constraintStart_toStartOf="@+id/roosterTijdDinsdag"
+        app:layout_constraintTop_toTopOf="@+id/textViewWoensdag" />
 
+    <TextView
+        android:id="@+id/roosterTijdDonderdag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textSize="18sp"
+        android:textStyle="italic"
+        app:layout_constraintStart_toStartOf="@+id/roosterTijdWoensdag"
+        app:layout_constraintTop_toTopOf="@+id/textViewDonderdag" />
+
+    <TextView
+        android:id="@+id/roosterTijdVrijdag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textSize="18sp"
+        android:textStyle="italic"
+        app:layout_constraintStart_toStartOf="@+id/roosterTijdDonderdag"
+        app:layout_constraintTop_toTopOf="@+id/textViewVrijdag" />
+
+    <TextView
+        android:id="@+id/roosterTijdZaterdag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textSize="18sp"
+        android:textStyle="italic"
+        app:layout_constraintStart_toStartOf="@+id/roosterTijdVrijdag"
+        app:layout_constraintTop_toTopOf="@+id/textViewZaterdag" />
+
+    <TextView
+        android:id="@+id/roosterTijdZondag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textSize="18sp"
+        android:textStyle="italic"
+        app:layout_constraintStart_toStartOf="@+id/roosterTijdZaterdag"
+        app:layout_constraintTop_toTopOf="@+id/textViewZondag" />
+
+    <TextView
+        android:id="@+id/roosterVanTitel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="TextView"
+        android:textColor="@android:color/primary_text_light"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>

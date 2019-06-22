@@ -84,7 +84,7 @@ public class EditProfileActivity extends AppCompatActivity {
                 }
 
                 if (documentSnapshot.exists()) {
-                    profielNaam.setText("Profiel van " + documentSnapshot.getString(NAAM));
+                    profielNaam.setText(getString(R.string.profielvan, documentSnapshot.getString(NAAM)));
                     profielNaam.setVisibility(View.VISIBLE);
                     editProfielNaam.setText(documentSnapshot.getString(NAAM));
                     telefoonnummer.setText(documentSnapshot.getString(TELEFOONNUMMER));

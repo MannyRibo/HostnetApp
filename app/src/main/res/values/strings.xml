@@ -3,6 +3,7 @@
     <string name="title">Title</string>
     <string name="description">Description</string>
     <string name="profielvan">Profiel van %1$s</string>
+    <string name="roostervan">Rooster van %1$s</string>
     <string-array name="afdelingen">
         <item>Kies je afdeling...</item>
         <item>Administratie</item>
