@@ -27,6 +27,7 @@ import javax.annotation.Nullable;
 
 public class ZoekActivity extends AppCompatActivity {
 
+
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private DocumentReference userRef = db.collection("Users").document(mAuth.getCurrentUser().getUid());

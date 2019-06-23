@@ -333,20 +333,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/profielVan_details"
                 app:srcCompat="@drawable/profilepicture" />
 
-            <Button
-                android:id="@+id/editrooster"
-                android:layout_width="0dp"
-                android:layout_height="40dp"
-                android:background="#ffffff"
-                android:onClick="editRooster"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:text="BEWERKEN"
-                android:textColor="@color/colorPrimaryDark"
-                app:layout_constraintBaseline_toBaselineOf="@+id/telefoonnummer_details3"
-                app:layout_constraintEnd_toEndOf="@+id/tijdMaandag"
-                app:layout_constraintStart_toStartOf="@+id/tijdMaandag" />
-
         </android.support.constraint.ConstraintLayout>
     </android.support.v4.widget.NestedScrollView>
 </android.support.v7.widget.CardView>

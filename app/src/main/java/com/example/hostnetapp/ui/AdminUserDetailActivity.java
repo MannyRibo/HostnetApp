@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.example.hostnetapp.R;
 import com.example.hostnetapp.model.User;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
@@ -29,8 +30,9 @@ public class AdminUserDetailActivity extends AppCompatActivity {
     private static final String IMAGEURL = "imageurl";
 
     User user;
-
+    private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private String currentUserEmail = mAuth.getCurrentUser().getEmail();
     private DocumentReference userRef;
 
     public static final String USER = "user";
@@ -38,7 +40,12 @@ public class AdminUserDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.user_details);
+
+        if (currentUserEmail.equals("admin@hostnet.nl")){
+            setContentView(R.layout.user_details);
+        }else{
+            setContentView(R.layout.result_user_details);
+        }
 
         user = getIntent().getParcelableExtra(AdminResultsActivity.USER);
 

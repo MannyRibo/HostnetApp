@@ -38,6 +38,7 @@
         android:layout_marginStart="100dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="100dp"
+        android:foreground="@drawable/rounded_fg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profielVan" />
@@ -68,8 +69,8 @@
 
     <ImageView
         android:id="@+id/imageViewZoekNaam"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="31dp"
+        android:layout_height="27dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:onClick="zoekOpNaam"
@@ -91,9 +92,9 @@
 
     <ImageView
         android:id="@+id/imageViewZoekAfdeling"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_width="31dp"
+        android:layout_height="27dp"
+        android:layout_marginStart="12dp"
         android:layout_marginTop="8dp"
         android:onClick="zoekOpAfdeling"
         app:layout_constraintStart_toEndOf="@+id/spinner_zoek"

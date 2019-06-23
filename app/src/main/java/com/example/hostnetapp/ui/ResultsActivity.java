@@ -12,13 +12,17 @@ import com.example.hostnetapp.model.User;
 import com.example.hostnetapp.model.UserAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
-public class ResultsActivity extends AppCompatActivity {
+public class ResultsActivity extends AppCompatActivity  {
+
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference userRef = db.collection("Users");
     private UserAdapter adapter;
+    public static final String USER = "user";
+//    private OnItemClickListener mItemClickListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,9 +40,7 @@ public class ResultsActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String searchName = intent.getStringExtra("searchname");
         String searchAfdeling = intent.getStringExtra("searchafdeling");
-//        String searchAfdeling = intent.getStringExtra("searchafdeling");
 
-//intent.getStringExtra("seachname")
         if (searchName == null) {
             setTitle("Resultaten: "+ searchAfdeling);
             Query query = userRef.whereEqualTo("afdeling", searchAfdeling);
@@ -53,15 +55,25 @@ public class ResultsActivity extends AppCompatActivity {
             recyclerView.setHasFixedSize(true);
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
             recyclerView.setAdapter(adapter);
+
+            adapter.setOnItemClickListener(new UserAdapter.OnItemClickListener() {
+                @Override
+                public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
+                    User user = documentSnapshot.toObject(User.class);
+
+                    Intent intent = new Intent(ResultsActivity.this, AdminUserDetailActivity.class);
+                    intent.putExtra(USER, user);
+                    startActivity(intent);
+
+                }
+            });
         } else {
             setTitle("Resultaten: "+ searchName);
             Query query = userRef.whereEqualTo("naam", searchName);
 //            String str1 = document.getString("yourProperty");
 //            String str2 = "Cali";
 //            boolean b = str1.toLowerCase().contains(str2.toLowerCase());
-//             = userRef.orderBy("name").startAt(searchName).endAt(searchName + "\uf8ff");
-//            Query query = FirebaseFirestore.getInstance().collection("Users").whereGreaterThanOrEqualTo("naam", searchName);
-//            Query query = db.collection("Users").startAt(searchAfdeling+ "\uf8ff");
+
             FirestoreRecyclerOptions<User> options = new FirestoreRecyclerOptions.Builder<User>()
                     .setQuery(query, User.class)
                     .build();
@@ -72,6 +84,18 @@ public class ResultsActivity extends AppCompatActivity {
             recyclerView.setHasFixedSize(true);
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
             recyclerView.setAdapter(adapter);
+
+            adapter.setOnItemClickListener(new UserAdapter.OnItemClickListener() {
+                @Override
+                public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
+                    User user = documentSnapshot.toObject(User.class);
+
+                    Intent intent = new Intent(ResultsActivity.this, AdminUserDetailActivity.class);
+                    intent.putExtra(USER, user);
+                    startActivity(intent);
+
+                }
+            });
         }
     }
 
@@ -88,4 +112,15 @@ public class ResultsActivity extends AppCompatActivity {
     }
 
 
+//    @Override
+//    public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
+////        TupperMeal tupperMeal = mTupperMeals.get(position);
+////        Intent intent = new Intent(MainActivity.this, RecipeActivity.class);
+////        startActivity(intent);
+////        Toast.makeText(this, tupperMeal.toString(), Toast.LENGTH_SHORT).show();
+//        System.out.println(position);
+////        Intent intent = new Intent(MainActivity.this, AddEditActivity.class);
+////        intent.putExtra(MainActivity.EXTRA_TUPPERMEAL, tupperMeal);
+////        startActivity(intent);
+//    }
 }

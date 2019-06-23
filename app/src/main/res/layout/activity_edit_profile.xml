@@ -28,6 +28,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="100dp"
         android:layout_marginBottom="24dp"
+        android:foreground="@drawable/rounded_fg"
         app:layout_constraintBottom_toTopOf="@+id/wijzigTelefoon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

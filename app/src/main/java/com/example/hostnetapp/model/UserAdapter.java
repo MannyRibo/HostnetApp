@@ -15,7 +15,7 @@ import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.DocumentSnapshot;
 
-public class UserAdapter extends FirestoreRecyclerAdapter<User, UserAdapter.UserHolder> {
+public class UserAdapter extends FirestoreRecyclerAdapter<User, UserAdapter.ViewHolder> {
 
     private OnItemClickListener listener;
     private Context mContext;
@@ -26,7 +26,7 @@ public class UserAdapter extends FirestoreRecyclerAdapter<User, UserAdapter.User
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull UserHolder holder, int position, @NonNull User model) {
+    protected void onBindViewHolder(@NonNull ViewHolder holder, int position, @NonNull User model) {
         holder.textViewTitle.setText(model.getNaam());
         String url = model.getImageurl();
         System.out.println("liewe "+url);
@@ -49,22 +49,22 @@ public class UserAdapter extends FirestoreRecyclerAdapter<User, UserAdapter.User
 
     @NonNull
     @Override
-    public UserHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_user_cardview,
                 parent, false);
-        return new UserHolder(v);
+        return new ViewHolder(v);
     }
 
-    class UserHolder extends RecyclerView.ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder {
         TextView textViewTitle;
         ImageView imageView;
 
-        public UserHolder(View itemView) {
+        public ViewHolder(View itemView) {
             super(itemView);
             textViewTitle = itemView.findViewById(R.id.text_view_title);
             imageView = itemView.findViewById(R.id.profileImage_cardview);
-//            textViewDescription = itemView.findViewById(R.id.text_view_description);
-//            textViewPriority = itemView.findViewById(R.id.text_view_priority);
+
+//            itemView.setOnClickListener(this);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -73,6 +73,9 @@ public class UserAdapter extends FirestoreRecyclerAdapter<User, UserAdapter.User
                     if (position != RecyclerView.NO_POSITION && listener != null) {
 
                         listener.onItemClick(getSnapshots().getSnapshot(position), position);
+                    }else{
+                        System.out.println(position);
+                        System.out.println(getSnapshots().getSnapshot(position).getId());
                     }
 
                 }
