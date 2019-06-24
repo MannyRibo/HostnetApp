@@ -1,7 +1,9 @@
 package com.example.hostnetapp.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +25,7 @@ public class RoosterActivity extends AppCompatActivity {
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private DocumentReference userRef;
     private TextView roosterVan, maandag, dinsdag, woensdag, donderdag, vrijdag, zaterdag, zondag;
+    private String naamVanGebruiker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +61,8 @@ public class RoosterActivity extends AppCompatActivity {
                 if (documentSnapshot.exists()) {
                     User user = documentSnapshot.toObject(User.class);
 
+                    naamVanGebruiker = user.getNaam();
+
                     roosterVan.setText(getString(R.string.roostervan, user.getNaam()));
                     maandag.setText(user.getRooster().getMaandag());
                     dinsdag.setText(user.getRooster().getDinsdag());
@@ -69,6 +74,25 @@ public class RoosterActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public void roosterDelen(View view) {
+
+        String roosterAlsTekst = "Hey eikel, mijn rooster is: \n" + "\nMaandag: " +  maandag.getText().toString() +
+                "\nDinsdag: " +  dinsdag.getText().toString() +
+                "\nWoensdag: " +  woensdag.getText().toString() +
+                "\nDonderdag: " +  donderdag.getText().toString() +
+                "\nVrijdag: " +  vrijdag.getText().toString() +
+                "\nZaterdag: " +  zaterdag.getText().toString() +
+                "\nZondag: " +  zondag.getText().toString()
+                + "\n\n"
+                + "Groetjes van " + naamVanGebruiker;
+
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_SEND);
+        intent.putExtra(Intent.EXTRA_TEXT, roosterAlsTekst);
+        intent.setType("text/plain");
+        startActivity(intent);
     }
 
 }
