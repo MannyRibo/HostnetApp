@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.hostnetapp.R;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -57,13 +58,7 @@ public class AdminActivity extends AppCompatActivity {
                     naam.setText(documentSnapshot.getString(NAAM));
                     naam.setVisibility(View.VISIBLE);
 
-                    if (documentSnapshot.getString(IMAGEURL) == null) {
-                        profielfoto.setImageResource(R.drawable.profilepicture);
-                        profielfoto.setVisibility(View.VISIBLE);
-                    } else {
-                        profielfoto.setImageDrawable(Drawable.createFromPath(documentSnapshot.getString(IMAGEURL)));
-                        profielfoto.setVisibility(View.VISIBLE);
-                    }
+                    Glide.with(getApplicationContext()).load("https://firebasestorage.googleapis.com/v0/b/schoolapp-97dd0.appspot.com/o/uploads%2F" + documentSnapshot.getString(IMAGEURL)).into(profielfoto);
                 }
             }
         });

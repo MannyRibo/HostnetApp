@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".EditProfile">
 
     <TextView
@@ -22,8 +23,8 @@
 
     <ImageView
         android:id="@+id/profile_view_edit"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_marginStart="100dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="100dp"
@@ -62,13 +63,14 @@
 
     <EditText
         android:id="@+id/search_name_edit"
-        android:layout_width="245dp"
+        android:layout_width="0dp"
         android:layout_height="45dp"
         android:layout_marginTop="4dp"
         android:ems="10"
         android:hint="06 - 8225 4321"
         android:inputType="number|phone"
         android:textColorLink="@color/colorPrimaryDark"
+        app:layout_constraintEnd_toEndOf="@+id/wijzigTelefoon"
         app:layout_constraintStart_toStartOf="@+id/wijzigTelefoon"
         app:layout_constraintTop_toBottomOf="@+id/wijzigTelefoon" />
 
@@ -85,14 +87,15 @@
 
     <EditText
         android:id="@+id/editProfielnaam"
-        android:layout_width="258dp"
+        android:layout_width="0dp"
         android:layout_height="49dp"
         android:layout_marginTop="4dp"
         android:ems="10"
         android:hint="Profielnaam"
         android:inputType="textPersonName"
         android:textColorLink="@color/colorPrimaryDark"
-        app:layout_constraintStart_toStartOf="@+id/wijzigProfielnaam"
+        app:layout_constraintEnd_toEndOf="@+id/search_name_edit"
+        app:layout_constraintStart_toStartOf="@+id/search_name_edit"
         app:layout_constraintTop_toBottomOf="@+id/wijzigProfielnaam" />
 
     <Button

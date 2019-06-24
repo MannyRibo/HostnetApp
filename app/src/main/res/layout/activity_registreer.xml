@@ -71,24 +71,18 @@
 
     <Spinner
         android:id="@+id/spinner_edit"
-        android:layout_width="308dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="52dp"
-        android:spinnerMode= "dropdown"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="316dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        android:spinnerMode="dropdown"
+        app:layout_constraintStart_toStartOf="@+id/registreerWachtwoord"
         app:layout_constraintTop_toBottomOf="@+id/registreerWachtwoord" />
 
     <Button
         android:id="@+id/registreerButton"
         android:layout_width="200dp"
         android:layout_height="50dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginTop="24dp"
         android:background="#FFFFFF"
         android:onClick="onClickRegistreren"
         android:text="REGISTREREN"

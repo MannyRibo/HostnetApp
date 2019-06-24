@@ -41,7 +41,7 @@ public class AdminResultsActivity extends AppCompatActivity {
     private void setUpRecyclerView() {
 
             setTitle("Alle werknemers");
-            Query query = userRef.orderBy("naam").startAt("Administratie");
+            Query query = userRef.orderBy("afdeling").startAt("Administratie");
 //             = userRef.orderBy("name").startAt(searchName).endAt(searchName + "\uf8ff");
 //            Query query = FirebaseFirestore.getInstance().collection("Users").whereGreaterThanOrEqualTo("naam", searchName);
 //            Query query = db.collection("Users").startAt(searchAfdeling+ "\uf8ff");

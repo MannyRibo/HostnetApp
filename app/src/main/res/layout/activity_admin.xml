@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".ui.AdminActivity">
 
     <ImageView
@@ -12,8 +13,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:onClick="onClickEditProfile"
-        app:layout_constraintBottom_toBottomOf="@+id/naamAdmin"
-        app:layout_constraintStart_toEndOf="@+id/naamAdmin"
+        app:layout_constraintBottom_toBottomOf="@+id/adminPicture"
+        app:layout_constraintStart_toEndOf="@+id/adminPicture"
         app:srcCompat="@drawable/ic_edit" />
 
     <Button
@@ -63,11 +64,13 @@
 
     <ImageView
         android:id="@+id/adminPicture"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
+        android:background="#FFFFFF"
+        android:foreground="@drawable/rounded_fg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ingelogdAlsAdmin"
