@@ -95,7 +95,7 @@
         android:id="@+id/imageViewZoekAfdeling"
         android:layout_width="31dp"
         android:layout_height="27dp"
-        android:layout_marginStart="12dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:onClick="zoekOpAfdeling"
         app:layout_constraintStart_toEndOf="@+id/spinner_zoek"
@@ -121,11 +121,12 @@
 
     <Spinner
         android:id="@+id/spinner_zoek"
-        android:layout_width="295dp"
+        android:layout_width="0dp"
         android:layout_height="36dp"
         android:layout_marginTop="12dp"
         android:spinnerMode="dropdown"
-        app:layout_constraintStart_toStartOf="@+id/wijzigProfielnaam"
+        app:layout_constraintEnd_toEndOf="@+id/search_name_edit"
+        app:layout_constraintStart_toStartOf="@+id/search_name_edit"
         app:layout_constraintTop_toBottomOf="@+id/wijzigProfielnaam" />
 
 </android.support.constraint.ConstraintLayout>

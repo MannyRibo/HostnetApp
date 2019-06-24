@@ -259,24 +259,24 @@
                 android:id="@+id/naam_details_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="60dp"
                 android:layout_marginTop="24dp"
                 android:text="Voorbeeldnaam"
                 android:textSize="16sp"
                 android:textStyle="italic"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/naam_details"
+                app:layout_constraintStart_toStartOf="@+id/afdeling_details_text"
                 app:layout_constraintTop_toBottomOf="@+id/profielfoto_details" />
 
             <TextView
                 android:id="@+id/afdeling_details_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="60dp"
                 android:text="Voorbeeldafdeling"
                 android:textSize="16sp"
                 android:textStyle="italic"
                 app:layout_constraintBaseline_toBaselineOf="@+id/afdeling_details"
-                app:layout_constraintStart_toStartOf="@+id/naam_details_text" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/afdeling_details" />
 
             <TextView
                 android:id="@+id/email_details_text"
