@@ -28,7 +28,7 @@ public class User implements Parcelable {
         this.telefoonnummer = telefoonnummer;
         this.rooster = rooster;
         this.afdeling = afdeling;
-        this.imageurl = imageurl;
+        this.imageurl = "profilepicture.png?alt=media&token=85170f61-ac39-4edf-95fb-2c75041f7715";
     }
 
     public User() {

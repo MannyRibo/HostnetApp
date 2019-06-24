@@ -3,7 +3,6 @@ package com.example.hostnetapp.ui;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -15,6 +14,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.hostnetapp.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
@@ -77,8 +77,9 @@ public class ZoekActivity extends AppCompatActivity {
                         profileImageZoekscherm.setVisibility(View.VISIBLE);
                     }
                     else {
-                        profileImageZoekscherm.setImageDrawable(Drawable.createFromPath(documentSnapshot.getString(IMAGEURL)));
-                        profileImageZoekscherm.setVisibility(View.VISIBLE);
+//                        profileImageZoekscherm.setImageDrawable(Drawable.createFromPath(documentSnapshot.getString(IMAGEURL)));
+//                        profileImageZoekscherm.setVisibility(View.VISIBLE);
+                        Glide.with(getApplicationContext()).load("https://firebasestorage.googleapis.com/v0/b/schoolapp-97dd0.appspot.com/o/uploads%2F"+documentSnapshot.getString(IMAGEURL)).into(profileImageZoekscherm);
                     }
 
                 }

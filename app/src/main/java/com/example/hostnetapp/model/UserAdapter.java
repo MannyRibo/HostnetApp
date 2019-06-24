@@ -1,7 +1,6 @@
 package com.example.hostnetapp.model;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.hostnetapp.R;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
@@ -26,24 +26,24 @@ public class UserAdapter extends FirestoreRecyclerAdapter<User, UserAdapter.View
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull ViewHolder holder, int position, @NonNull User model) {
-        holder.textViewTitle.setText(model.getNaam());
-        String url = model.getImageurl();
+    protected void onBindViewHolder(@NonNull ViewHolder holder, int position, @NonNull User user) {
+        holder.textViewTitle.setText(user.getNaam());
+        String url = user.getImageurl();
         System.out.println("liewe "+url);
-//        Glide.with(mContext).load(url).into(holder.imageView);
+        Glide.with(mContext).load("https://firebasestorage.googleapis.com/v0/b/schoolapp-97dd0.appspot.com/o/uploads%2F"+url).into(holder.imageView);
 
-        if (model.getImageurl() == null) {
-            holder.imageView.setImageResource(R.drawable.profilepicture);
-            holder.imageView.setVisibility(View.VISIBLE);
-        }
-        else {
-            holder.imageView.setImageDrawable(Drawable.createFromPath(url));
-            holder.imageView.setVisibility(View.VISIBLE);
-        }
+//        if (user.getImageurl() == null) {
+//            holder.imageView.setImageResource(R.drawable.profilepicture);
+//            holder.imageView.setVisibility(View.VISIBLE);
+//        }
+//        else {
+//            holder.imageView.setImageDrawable(Drawable.createFromPath(url));
+//            holder.imageView.setVisibility(View.VISIBLE);
+//        }
 
 
 //        holder.imageView.setImageResource(R.drawable.profile2);
-//        holder.textViewDescription.setText(model.getEmailadres());
+//        holder.textViewDescription.setText(user.getEmailadres());
 //        holder.textViewPriority.setText("1");
     }
 
