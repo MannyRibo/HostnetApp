@@ -1,7 +1,6 @@
 package com.example.hostnetapp.ui;
 
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -9,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.hostnetapp.R;
 import com.example.hostnetapp.model.User;
 import com.google.firebase.auth.FirebaseAuth;
@@ -86,13 +86,8 @@ public class AdminUserDetailActivity extends AppCompatActivity {
                 }
 
                 if (documentSnapshot.exists()) {
-                    if (documentSnapshot.getString(IMAGEURL) == null) {
-                        profielfoto.setImageResource(R.drawable.profilepicture);
-                        profielfoto.setVisibility(View.VISIBLE);
-                    } else {
-                        profielfoto.setImageDrawable(Drawable.createFromPath(documentSnapshot.getString(IMAGEURL)));
-                        profielfoto.setVisibility(View.VISIBLE);
-                    }
+                    Glide.with(getApplicationContext()).load("https://firebasestorage.googleapis.com/v0/b/schoolapp-97dd0.appspot.com/o/uploads%2F" + documentSnapshot.getString(IMAGEURL)).into(profielfoto);
+
                     User newUser = (documentSnapshot.toObject(User.class));
 
                     maandag.setText(newUser.getRooster().getMaandag());

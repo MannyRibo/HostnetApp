@@ -71,16 +71,8 @@ public class ZoekActivity extends AppCompatActivity {
                 if (documentSnapshot.exists()) {
 
                     profielVan.setText(getString(R.string.ingelogdals, documentSnapshot.getString(NAAM)));
+                    Glide.with(getApplicationContext()).load("https://firebasestorage.googleapis.com/v0/b/schoolapp-97dd0.appspot.com/o/uploads%2F" + documentSnapshot.getString(IMAGEURL)).into(profileImageZoekscherm);
 
-                    if (documentSnapshot.getString(IMAGEURL) == null) {
-                        profileImageZoekscherm.setImageResource(R.drawable.profilepicture);
-                        profileImageZoekscherm.setVisibility(View.VISIBLE);
-                    }
-                    else {
-//                        profileImageZoekscherm.setImageDrawable(Drawable.createFromPath(documentSnapshot.getString(IMAGEURL)));
-//                        profileImageZoekscherm.setVisibility(View.VISIBLE);
-                        Glide.with(getApplicationContext()).load("https://firebasestorage.googleapis.com/v0/b/schoolapp-97dd0.appspot.com/o/uploads%2F"+documentSnapshot.getString(IMAGEURL)).into(profileImageZoekscherm);
-                    }
 
                 }
             }
