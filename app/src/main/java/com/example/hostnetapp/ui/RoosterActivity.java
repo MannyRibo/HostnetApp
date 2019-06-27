@@ -78,7 +78,7 @@ public class RoosterActivity extends AppCompatActivity {
 
     public void roosterDelen(View view) {
 
-        String roosterAlsTekst = "Hey eikel, mijn rooster is: \n" + "\nMaandag: " +  maandag.getText().toString() +
+        String roosterAlsTekst = "Hey, mijn rooster is: \n" + "\nMaandag: " +  maandag.getText().toString() +
                 "\nDinsdag: " +  dinsdag.getText().toString() +
                 "\nWoensdag: " +  woensdag.getText().toString() +
                 "\nDonderdag: " +  donderdag.getText().toString() +
