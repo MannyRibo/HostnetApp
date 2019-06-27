@@ -55,6 +55,7 @@ public class ZoekActivity extends AppCompatActivity {
         addItemsOnSpinner();
     }
 
+    /* start: check of user documenten heeft in de firebase db, zet Naam en Image op basis van URL */
     @Override
     protected void onStart() {
         super.onStart();

@@ -37,6 +37,7 @@ public class AdminUserDetailActivity extends AppCompatActivity {
 
     public static final String USER = "user";
 
+    /* Laad data meegegeven uit vorige Activiteit (user is meegegeven), verbinden met LayOut */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,7 +72,7 @@ public class AdminUserDetailActivity extends AppCompatActivity {
         emailadres.setText(user.getEmailadres());
         telefoonnummer.setText(user.getTelefoonnummer());
     }
-
+    /* Haal Rooster op */
     @Override
     protected void onStart() {
         super.onStart();

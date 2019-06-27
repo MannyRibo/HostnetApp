@@ -41,6 +41,7 @@ public class AdminActivity extends AppCompatActivity {
         profielfoto = findViewById(R.id.adminPicture);
     }
 
+    /* start: check of user documenten heeft in de firebase db, zet Naam en Image op basis van URL */
     @Override
     protected void onStart() {
         super.onStart();

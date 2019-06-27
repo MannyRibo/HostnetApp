@@ -80,18 +80,6 @@ public class EditProfileActivity extends AppCompatActivity {
 
         mStorageRef = FirebaseStorage.getInstance().getReference("uploads");
         mDatabaseRef = FirebaseDatabase.getInstance().getReference("Users"); //.child(mAuth.getCurrentUser().getUid());
-//
-//        mDatabaseRef.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//        });
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) !=
                 PackageManager.PERMISSION_GRANTED) {
@@ -100,6 +88,7 @@ public class EditProfileActivity extends AppCompatActivity {
         }
     }
 
+    /* Haal documenten op van user en zet Text en Plaatje */
     @Override
     protected void onStart() {
         super.onStart();
@@ -125,24 +114,16 @@ public class EditProfileActivity extends AppCompatActivity {
                         profileImage.setVisibility(View.VISIBLE);
                     } else {
                         Glide.with(getApplicationContext()).load("https://firebasestorage.googleapis.com/v0/b/schoolapp-97dd0.appspot.com/o/uploads%2F" + documentSnapshot.getString(IMAGEURL)).into(profileImage);
-                        //"https://firebasestorage.googleapis.com/v0/b/schoolapp-97dd0.appspot.com/o/uploads/"
-
-//                        profileImage.setImageDrawable(Drawable.createFromPath(documentSnapshot.getString(IMAGEURL)));
-//                        profileImage.setVisibility(View.VISIBLE);
                     }
                 }
             }
         });
     }
 
+    /*  Save profiel data, update oude data met nieuwe data */
     public void onClickSaveProfile(View view) {
         String nieuweNaam = editProfielNaam.getText().toString();
         String nieuwTelefoonnummer = telefoonnummer.getText().toString();
-//        String nieuwProfileImage = currentPhotoPath;
-        System.out.println("onclick   " + imageUrl);
-//
-//                +imageUrl).into(profileImage);
-
         Map<String, Object> nieuweGegevens = new HashMap<>();
         nieuweGegevens.put(NAAM, naamNaarHoofdletters(nieuweNaam));
         nieuweGegevens.put(TELEFOONNUMMER, nieuwTelefoonnummer);
@@ -166,6 +147,7 @@ public class EditProfileActivity extends AppCompatActivity {
         return naamHoofdletters;
     }
 
+    /* maak image file aan */
     private File createImageFile() throws IOException {
         // Create an image file name
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
@@ -181,6 +163,7 @@ public class EditProfileActivity extends AppCompatActivity {
         return image;
     }
 
+    /*  Open Camera, save foto naar file (eerder aangemaakt) */
     private void openCameraIntent() {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         // Ensure that there's a camera activity to handle the intent
@@ -199,13 +182,14 @@ public class EditProfileActivity extends AppCompatActivity {
                 Uri photoURI = FileProvider.getUriForFile(this,
                         "com.example.hostnetapp",
                         photoFile);
-//                Uri uri = FileProvider.getUriForFile(context, context.getPackageName() + ".share", result);
+
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
                 startActivityForResult(takePictureIntent, REQUEST_CAPTURE_IMAGE);
             }
         }
     }
 
+    /*  Na het maken van foto, upload gemaakte foto naar Storage van firebase */
     @Override
     protected void onActivityResult(int requestCode, int resultCode,
                                     Intent data) {
@@ -215,16 +199,13 @@ public class EditProfileActivity extends AppCompatActivity {
         }
     }
 
+    /* Klik op Camera button en open camer */
     public void onClickChangePicture(View view) {
         openCameraIntent();
     }
 
-//    private String getFileExtension(Uri uri) {
-//        ContentResolver cR = getContentResolver();
-//        MimeTypeMap mime = MimeTypeMap.getSingleton();
-//        return mime.getExtensionFromMimeType(cR.getType(uri));
-//    }
 
+    //Upload camera foto, zodra hij is geupload krijg link naar foto terug (asynch) en zodra link binnen is, zet link in imageURL
     private void uploadFile(final String currentPhotoPath) {
         String substring = currentPhotoPath.substring(1);
         System.out.println(substring);
@@ -247,20 +228,6 @@ public class EditProfileActivity extends AppCompatActivity {
 
                                     }
                                 })
-//
-//                    @Override
-//                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-//                        // Get a URL to the uploaded content
-////                        IMAGEURL = riversRef.toString().substring(5);
-////                        System.out.println("DL URL   "+riversRef.toString().substring(5));
-//
-//                        IMAGEURL = taskSnapshot.getMetadata().getReference().getDownloadUrl().toString();
-////                        Glide.with(this).load(IMAGEURL).into(profileImage);
-//                        System.out.println(IMAGEURL);
-////                        profileImage.setImageResource();
-////                        profileImage.setVisibility(View.VISIBLE);
-//                    }
-//                })
                                         .addOnFailureListener(new OnFailureListener() {
                                             @Override
                                             public void onFailure(@NonNull Exception exception) {

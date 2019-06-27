@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /* inloggen: check of velden zijn ingevuld. Sign in en ga naar Zoek Activiteit */
     public void onClickInloggen(View view) {
 
         emailadres = mEmailadres.getText().toString();
