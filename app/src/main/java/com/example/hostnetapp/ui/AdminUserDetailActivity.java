@@ -104,6 +104,12 @@ public class AdminUserDetailActivity extends AppCompatActivity {
         });
     }
 
+
+    /**
+     * @param view is de view waarop geklikt moet worden om de methode te triggeren
+     *             Deze methode zorgt ervoor dat als de admin op 'rooster bewerken' klikt er
+     *             naar de volgende activity wordt genavigeerd
+     */
     public void editRooster(View view) {
         Intent intent = new Intent(AdminUserDetailActivity.this, AdminUserDetailEditActivity.class);
         intent.putExtra(USER, user);

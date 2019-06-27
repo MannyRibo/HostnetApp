@@ -67,6 +67,10 @@ public class AdminUserDetailEditActivity extends AppCompatActivity {
         roosterVan.setText(getString(R.string.roostervan, user.getNaam()));
     }
 
+
+    /**
+     * Deze methode haalt de roostergegevens van de opgevraagde gebruiker op uit de database
+     */
     @Override
     protected void onStart() {
         super.onStart();
@@ -97,6 +101,12 @@ public class AdminUserDetailEditActivity extends AppCompatActivity {
         });
     }
 
+
+    /**
+     * @param view is de view waarop moet worden geklikt om de methode te triggeren
+     *             Deze methode update het rooster in de database aan de hand van de door de admin
+     *             nieuw ingevoerde gegevens
+     */
     public void saveRooster(View view) {
 
         String maandag = editTextMaandag.getText().toString();

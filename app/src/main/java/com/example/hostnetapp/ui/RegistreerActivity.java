@@ -88,6 +88,12 @@ public class RegistreerActivity extends AppCompatActivity {
 
     }
 
+
+    /**
+     * @param user is de momenteel ingelogde gebruiker
+     *             Deze methode zorgt ervoor dat een gebruiker feedback krijgt na het succesvol registreren,
+     *             in de vorm van een toast
+     */
     public void updateUI(FirebaseUser user) {
         Toast.makeText(RegistreerActivity.this, "Gebruiker geregistreerd met emailadres " +
                 user.getEmail(), Toast.LENGTH_LONG).show();
@@ -96,13 +102,18 @@ public class RegistreerActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+
+    /**
+     * @param view is de view waarop geklikt moet worden om de methode te triggeren
+     *             Deze methode zorgt ervoor dat alle vereiste gegevens zijn ingevuld en dat deze
+     *             voldoen aan de voorwaarden om een gebruiker te registreren
+     */
     public void onClickRegistreren(View view) {
         naam = mRegistreerNaam.getText().toString();
         emailadres = mRegistreerEmailadres.getText().toString();
         wachtwoord = mRegistreerWachtwoord.getText().toString();
         telefoonnummer = mRegistreerTelefoonnummer.getText().toString();
         afdeling = mAfdeling.getSelectedItem().toString();
-//        Toast.makeText(this, afdeling, Toast.LENGTH_SHORT).show();
 
         // admin hoeft geen afdeling te kiezen, deze gaat standaard naar afdeling admin
         if (afdeling == "Kies je afdeling..." && emailadres == "admin@hostnet.nl"
@@ -146,6 +157,11 @@ public class RegistreerActivity extends AppCompatActivity {
         }
     }
 
+
+    /**
+     * Deze methode zorgt ervoor dat een gebruiker wordt geregistreerd in de firebase database
+     * het ingevoerde emailadres en wachtwoord wordt gebruikt om de gebruiker te registreren
+     */
     private void gebruikerRegistreren() {
         mAuth.createUserWithEmailAndPassword(emailadres, wachtwoord)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -191,6 +207,14 @@ public class RegistreerActivity extends AppCompatActivity {
                 });
     }
 
+
+    /**
+     * @param naam is de ingevoerde naam van de gebruiker
+     *             Deze methode zorgt ervoor dat de ingevoerde naam van een gebruiker
+     *             netjes met hoofdletters in het systeem komt te staan in het geval dat iemand
+     *             alleen lowercase heeft gebruikt
+     * @return de naam voorzien van hoofdletter aan het begin
+     */
     public String naamNaarHoofdletters(String naam) {
         naam.trim();
         String[] arr = naam.split(" ");

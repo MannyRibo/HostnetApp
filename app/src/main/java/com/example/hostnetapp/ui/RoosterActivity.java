@@ -76,6 +76,12 @@ public class RoosterActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * @param view is de view waarop geklikt dient te worden om de methode te triggeren
+     *             Deze methode zorgt ervoor dat er een intent wordt gemaakt
+     *             met de roostergegevens van de gebruiker, zodat deze zijn rooster kan delen
+     *             via social media
+     */
     public void roosterDelen(View view) {
 
         String roosterAlsTekst = "Hey, mijn rooster is: \n" + "\nMaandag: " +  maandag.getText().toString() +
